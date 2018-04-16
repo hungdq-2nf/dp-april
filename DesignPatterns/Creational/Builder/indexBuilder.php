@@ -60,33 +60,33 @@ interface BuilderInterface
 class CarBuilder implements BuilderInterface
 {
     /**
-     * @var Parts\Car
+     * @var Car
      */
     private $car;
 
     public function addDoors()
     {
-        $this->car->setPart('rightDoor', new Parts\Door());
-        $this->car->setPart('leftDoor', new Parts\Door());
-        $this->car->setPart('trunkLid', new Parts\Door());
+        $this->car->setPart('rightDoor', new Door());
+        $this->car->setPart('leftDoor', new Door());
+        $this->car->setPart('trunkLid', new Door());
     }
 
     public function addEngine()
     {
-        $this->car->setPart('engine', new Parts\Engine());
+        $this->car->setPart('engine', new Engine());
     }
 
     public function addWheel()
     {
-        $this->car->setPart('wheelLF', new Parts\Wheel());
-        $this->car->setPart('wheelRF', new Parts\Wheel());
-        $this->car->setPart('wheelLR', new Parts\Wheel());
-        $this->car->setPart('wheelRR', new Parts\Wheel());
+        $this->car->setPart('wheelLF', new Wheel());
+        $this->car->setPart('wheelRF', new Wheel());
+        $this->car->setPart('wheelLR', new Wheel());
+        $this->car->setPart('wheelRR', new Wheel());
     }
 
     public function createVehicle()
     {
-        $this->car = new Parts\Car();
+        $this->car = new Car();
     }
 
     public function getVehicle()
@@ -111,34 +111,34 @@ class Director
 class TruckBuilder implements BuilderInterface
 {
     /**
-     * @var Parts\Truck
+     * @var Truck
      */
     private $truck;
 
     public function addDoors()
     {
-        $this->truck->setPart('rightDoor', new Parts\Door());
-        $this->truck->setPart('leftDoor', new Parts\Door());
+        $this->truck->setPart('rightDoor', new Door());
+        $this->truck->setPart('leftDoor', new Door());
     }
 
     public function addEngine()
     {
-        $this->truck->setPart('truckEngine', new Parts\Engine());
+        $this->truck->setPart('truckEngine', new Engine());
     }
 
     public function addWheel()
     {
-        $this->truck->setPart('wheel1', new Parts\Wheel());
-        $this->truck->setPart('wheel2', new Parts\Wheel());
-        $this->truck->setPart('wheel3', new Parts\Wheel());
-        $this->truck->setPart('wheel4', new Parts\Wheel());
-        $this->truck->setPart('wheel5', new Parts\Wheel());
-        $this->truck->setPart('wheel6', new Parts\Wheel());
+        $this->truck->setPart('wheel1', new Wheel());
+        $this->truck->setPart('wheel2', new Wheel());
+        $this->truck->setPart('wheel3', new Wheel());
+        $this->truck->setPart('wheel4', new Wheel());
+        $this->truck->setPart('wheel5', new Wheel());
+        $this->truck->setPart('wheel6', new Wheel());
     }
 
     public function createVehicle()
     {
-        $this->truck = new Parts\Truck();
+        $this->truck = new Truck();
     }
 
     public function getVehicle()
