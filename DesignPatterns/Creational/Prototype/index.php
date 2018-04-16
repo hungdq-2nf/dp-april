@@ -1,0 +1,7 @@
+<?php
+require 'indexPrototype.php';
+
+
+
+
+

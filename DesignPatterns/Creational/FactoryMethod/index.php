@@ -1,0 +1,12 @@
+<?php
+require 'indexFactoryMethod.php';
+
+
+
+
+
+
+
+
+
+
