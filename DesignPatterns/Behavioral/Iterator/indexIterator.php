@@ -42,14 +42,8 @@ class Book
 
 class BookList implements \Countable, \Iterator
 {
-    /**
-     * @var Book[]
-     */
     private $books = [];
 
-    /**
-     * @var int
-     */
     private $currentIndex = 0;
 
     public function addBook(Book $book)
@@ -99,9 +93,31 @@ class BookList implements \Countable, \Iterator
     }
 }
 
+$book = new Book();
+$bookList = new BookList();
 
+echo 'addBook() <br>';
+echo $bookList->addBook($book);
 
+echo '<br><br> removeBook() <br>';
+echo $bookList->removeBook($book);
 
+echo '<br><br> count() <br>';
+echo $bookList->count();
 
+echo '<br><br> current() <br>';
+echo $bookList->current();
+
+echo '<br><br> key() <br>';
+echo $bookList->key();
+
+echo '<br><br> next() <br>';
+echo $bookList->next();
+
+echo '<br><br> rewind() <br>';
+echo $bookList->rewind();
+
+echo '<br><br> valid() <br>';
+echo $bookList->valid();
 
 
