@@ -43,5 +43,9 @@ class Service
     }
 }
 
+$service = new Service();
+$service->doSomething();
+
+
 
 
