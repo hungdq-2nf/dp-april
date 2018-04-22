@@ -7,7 +7,7 @@ class Customer
 {
     private $pay;
 
-    function __construct($pay)
+    function __construct(BanknetToSmartLinkAdapter $pay)
     {
         $this->pay = $pay;
     }
@@ -28,7 +28,7 @@ class BanknetTransfer
 
     public function addItemAmount($amount)
     {
-        echo "1 item added with amount: " . $price;
+        echo "1 item added with amount: " . $amount;
     }
 
     // Một phương thức khác không tương đồng với SmartLink
@@ -65,7 +65,7 @@ class BanknetToSmartLinkAdapter implements SmartLink
     private $payObj;
 
     // Thiết lập tham chiếu thông qua phương thức khởi tạo
-    function __construct($payObj)
+    function __construct(BanknetTransfer $payObj)
     {
         $this->payObj = $payObj;
     }
@@ -79,7 +79,7 @@ class BanknetToSmartLinkAdapter implements SmartLink
 
     function addFund($itemAmount)
     {
-
+        $this->payObj->addItemAmount($itemAmount);
     }
 }
 
@@ -87,3 +87,46 @@ $BanknetTransfer = new BanknetTransfer();
 $pay = new BanknetToSmartLinkAdapter($BanknetTransfer);
 $customer = new Customer($pay);
 $customer->transfer("Chuyển tiền thuê hosting", 2000000);
+echo '<br> --- <br>';
+
+
+
+$banknetTransfer = new BanknetTransfer();
+
+echo '<br> $banknetTransfer->addOneItem(\'itemName 2\') <br>';
+$banknetTransfer->addOneItem('itemName 2');
+
+echo '<br> $banknetTransfer->addItemAmount(200) <br>';
+$banknetTransfer->addItemAmount(200);
+
+echo '<br> $banknetTransfer->addItemAndAmount(\'itemName 3\', 300) <br>';
+$banknetTransfer->addItemAndAmount('itemName 3', 300);
+
+
+echo '<br> $smatLinkTransfer <br>';
+$smatLinkTransfer = new SmartLinkTransfer();
+
+echo '<br> $smatLinkTransfer->addItem(\'itemName 4\') <br>';
+$smatLinkTransfer->addItem('itemName 4');
+
+echo '<br> $smatLinkTransfer->addFund(400) <br>';
+$smatLinkTransfer->addFund(400);
+
+echo '<br> $banknetToSmartLinkAdapter <br>';
+$banknetToSmartLinkAdapter = new BanknetToSmartLinkAdapter($banknetTransfer);
+
+echo '<br> $banknetToSmartLinkAdapter->addItem(\'itemName 5\') <br>';
+$banknetToSmartLinkAdapter->addItem('itemName 5');
+
+echo '<br> $banknetToSmartLinkAdapter->addFund(500) <br>';
+$banknetToSmartLinkAdapter->addFund(500);
+
+echo '<br> $customer <br>';
+$customer = new Customer($banknetToSmartLinkAdapter);
+
+echo '<br> $customer->transfer(\'itemName 1\', 100) <br>';
+$customer->transfer('itemName 1', 100);
+
+echo '<br>  <br>';
+
+

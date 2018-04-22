@@ -35,6 +35,14 @@ abstract class Registry
     }
 }
 
+echo '<br><br> Registry <br>';
+Registry::set('key1','value1');
+Registry::get('key1');
+
+
+
+echo '<br><br>  <br>';
+
 
 
 

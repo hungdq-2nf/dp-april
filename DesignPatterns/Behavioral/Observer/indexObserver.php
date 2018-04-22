@@ -74,5 +74,23 @@ class UserObserver implements \SplObserver
     }
 }
 
+$user = new User();
+echo '<br><br> user->attach() <br>';
+echo $user->attach();
 
+echo '<br><br> user->detach() <br>';
+echo $user->detach();
+
+echo '<br><br> user->changeEmail("audi@gmail.com") <br>';
+echo $user->changeEmail("audi@gmail.com");
+
+echo '<br><br> user->notify() <br>';
+echo $user->notify();
+
+$userObserver = new UserObserver();
+echo '<br><br> user->update() <br>';
+echo $userObserver->update();
+
+echo '<br><br> user->getChangedUsers() <br>';
+echo $userObserver->getChangedUsers();
 

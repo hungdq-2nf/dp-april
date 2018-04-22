@@ -50,6 +50,13 @@ class Facade
     }
 }
 
+echo '<br><br> Facade <br>';
+$facade = new Facade();
+$facade->turnOn();
+$facade->turnOff();
+
+echo '<br><br>  <br>';
+
 
 
 

@@ -63,6 +63,16 @@ class RecordProxy extends Record
     }
 }
 
+echo '<br><br> Record <br>';
+$record = new Record(['name' => 'Audi']);
+$record->__set('name', 'Audi');
+$record->__get('name');
+
+
+echo '<br><br> RecordProxy <br>';
+$recordProxy = new RecordProxy(['name2' => 'Audi 2']);
+$recordProxy->__set('name3', 'Audi 3');
+echo $recordProxy->isDirty();
 
 
 

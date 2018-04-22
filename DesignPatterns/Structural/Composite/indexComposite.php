@@ -58,6 +58,19 @@ class Form implements RenderableInterface
 }
 
 
+echo '<br><br> $inputElement->render() <br>';
+$inputElement = new InputElement();
+echo $inputElement->render();
 
+echo '<br><br> $textElement->render() <br>';
+$textElement = new TextElement();
+echo $textElement->render();
+
+echo '<br><br> $textElement->render() <br>';
+$form = new Form();
+echo $form->render();
+
+$element = 1;
+$form->addElement($element);
 
 

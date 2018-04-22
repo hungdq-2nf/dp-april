@@ -56,4 +56,19 @@ class Webservice implements RenderableInterface
     }
 }
 
+echo '<br><br> $jsonRenderer->renderData() <br>';
+$jsonRenderer = new JsonRenderer();
+$jsonRenderer->renderData();
+
+echo '<br><br> $xmlRenderer->renderData() <br>';
+$xmlRenderer = new XmlRenderer();
+$xmlRenderer->renderData();
+
+echo '<br><br> $webservice->renderData() <br>';
+$webservice = new Webservice();
+$webservice->renderData();
+
+
+
+
 

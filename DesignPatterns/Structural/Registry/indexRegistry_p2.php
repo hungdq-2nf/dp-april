@@ -32,3 +32,16 @@ $admin = new Admin($registry);
 // Hoặc có thể lấy đối tượng $db để thực hiện các công việc khác
 $databaseObj = $registry->get("database");
 $databaseObj->query("SELECT username FROM users" . " WHERE id=$userId");
+
+
+
+echo '<br><br> Registry <br>';
+$registry = new Registry();
+$registry->set('name', 'obj');
+echo $registry->get('name');
+
+
+echo '<br><br>  <br>';
+
+
+

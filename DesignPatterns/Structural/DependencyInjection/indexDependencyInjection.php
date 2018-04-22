@@ -88,6 +88,19 @@ class DatabaseConnection
     }
 }
 
+echo '<br><br> DatabaseConfiguration <br>';
+$dbConfig = new DatabaseConfiguration('127.0.0.1', 80, 'root', '123');
+echo $dbConfig->getHost();
+echo $dbConfig->getPort();
+echo $dbConfig->getUsername();
+echo $dbConfig->getPassword();
+
+echo '<br><br> $dbConnect->getDsn() <br>';
+$dbConnect = new DatabaseConnection($dbConfig);
+echo $dbConnect->getDsn();
+
+
+
 
 
 

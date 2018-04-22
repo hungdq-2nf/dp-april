@@ -30,13 +30,13 @@ class Cat implements AnimalFeeder
     {
         switch ($hungerLevel) {
             case 0:
-                return 'lamb';
+                return 'food for cat 1';
                 break;
             case 1:
-                return 'chicken';
+                return 'food for cat 2';
                 break;
             case 3:
-                return 'tuna';
+                return 'food for cat 3';
                 break;
         }
     }
@@ -64,12 +64,12 @@ class Dog
 
     protected function selectFood(int $hungerLevel): string
     {
-        if ($hungerLevel == 3) {
-            return "chicken and vegetables";
-        } elseif (date('H') < 10) {
-            return "turkey and beef";
-        } else {
-            return "chicken and rice";
+        if ($hungerLevel == 1) {
+            return "food for dog 1";
+        } elseif ($hungerLevel == 2) {
+            return "food for dog 2";
+        } elseif ($hungerLevel == 3) {
+            return "food for dog 3";
         }
     }
 }
@@ -90,13 +90,38 @@ class AnimalFeederProxy
     }
 }
 
-$felix = new \IcyApril\PetShop\AnimalFeederProxy('Cat', 'Felix');
+$felix = new AnimalFeederProxy('Cat', 'Felix');
 echo $felix->displayFood(1);
 echo "\n";
 echo $felix->dropFood(1, true);
 echo "\n";
 
-$brian = new \IcyApril\PetShop\AnimalFeederProxy('Dog', 'Brian');
+$brian = new AnimalFeederProxy('Dog', 'Brian');
 echo $brian->displayFood(1);
 echo "\n";
 echo $brian->dropFood(1, true);
+
+
+
+echo '<br><br> Cat <br>';
+$cat = new Cat('Cat 1');
+$cat->dropFood(1, false);
+$cat->displayFood(2);
+
+echo '<br><br> Dog <br>';
+$dog = new Dog('Dog 1');
+$dog->dropFood(1, true);
+$dog->displayFood(2);
+
+
+echo '<br><br> AnimalFeederProxy Cat 1<br>';
+$animalFeederProxy = new AnimalFeederProxy('Feeder 1', 'Cat 1');
+$animalFeederProxy->__call('Cat 1', 1);
+
+echo '<br><br> AnimalFeederProxy Dog 1<br>';
+$animalFeederProxy = new AnimalFeederProxy('Feeder 2', 'Dog 1');
+$animalFeederProxy->__call('Dog 1', 1);
+
+
+
+

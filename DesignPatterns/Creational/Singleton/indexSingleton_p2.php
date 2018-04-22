@@ -62,4 +62,11 @@ $test = Config::getInstance();
 echo '<p>$test["database_connected"]: ' . $test->get('database_connected') . '</p>';
 
 // Xóa các đối tượng sau khi sử dụng
-unset($config, $test);
+//unset($config, $test);
+
+
+echo '<br><br>  <br>';
+
+
+echo '<br><br>  <br>';
+

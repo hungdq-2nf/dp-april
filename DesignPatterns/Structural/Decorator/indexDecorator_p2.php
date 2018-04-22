@@ -101,3 +101,24 @@ $carFullOption = new GPSNavigation($carWithSunRoofAndLeatherSeats);
 // 5. Kiểm tra xe với tùy chọn đầy đủ
 echo $carFullOption->description();
 echo " giá " . $carFullOption->cost();
+
+echo '<br><br> Suv <br>';
+$suv = new Suv();
+echo $suv->cost();
+echo $suv->description();
+
+echo '<br><br> SunRoof <br>';
+$sunRoof = new SunRoof();
+echo $sunRoof->cost();
+echo $sunRoof->description();
+
+echo '<br><br> LeatherSeats <br>';
+$leatherSeats = new LeatherSeats();
+echo $leatherSeats->cost();
+echo $leatherSeats->description();
+
+
+
+
+
+

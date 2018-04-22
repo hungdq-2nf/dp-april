@@ -148,4 +148,28 @@ class TruckBuilder implements BuilderInterface
 }
 
 
+echo '<br><br> CarBuilder <br>';
+$carBuilder = new CarBuilder();
+$carBuilder->addDoors();
+$carBuilder->addEngine();
+$carBuilder->addWheel();
+$carBuilder->createVehicle();
+echo '$carBuilder->getVehicle(): <br>';
+echo $carBuilder->getVehicle();
+
+
+echo '<br><br> Director <br>';
+$director = new Director();
+echo $director->build();
+
+
+echo '<br><br> TruckBuilder <br>';
+$truckBuilder = new TruckBuilder();
+$truckBuilder->addDoors();
+$truckBuilder->addEngine();
+$truckBuilder->addWheel();
+$truckBuilder->createVehicle();
+echo '$truckBuilder->getVehicle(): <br>';
+echo $truckBuilder->getVehicle();
+
 

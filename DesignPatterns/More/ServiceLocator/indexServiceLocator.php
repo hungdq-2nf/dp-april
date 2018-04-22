@@ -66,7 +66,9 @@ class ServiceLocator
      */
     public function get(string $class)
     {
-        if (isset($this->instantiated[$class]) && $this->shared[$class]) {
+        if (isset($this->instantiated[$class])
+            && $this->shared[$class]
+        ) {
             return $this->instantiated[$class];
         }
 
@@ -96,6 +98,22 @@ class ServiceLocator
         return $object;
     }
 }
+
+echo '<br><br> ServiceLocator <br>';
+$objectService = 0;
+$serviceLocator = new ServiceLocator();
+$serviceLocator->addInstance('class', (object)$objectService, true);
+
+echo '<br> $serviceLocator->addClass() <br>';
+echo $serviceLocator->addClass('class 2', [1, 3], true);
+
+echo '<br><br> $serviceLocator->has(\'interface\') <br>';
+echo $serviceLocator->has('interface');
+
+echo '<br><br> $serviceLocator->get(\'class 3\') <br>';
+echo $serviceLocator->get('class 3');
+
+
 
 
 

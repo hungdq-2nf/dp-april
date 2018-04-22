@@ -2,7 +2,7 @@
 echo '---- more > Delegation <br><br>';
 
 /* more > Delegation
- *
+ * Phái đoàn:
  *
  */
 
@@ -34,6 +34,14 @@ class TeamLead
         return $this->junior->writeBadCode();
     }
 }
+
+echo '<br><br> TeamLead <br>';
+$juniorDeveloper = new JuniorDeveloper();
+$teamLead = new TeamLead($juniorDeveloper);
+echo $teamLead->writeCode();
+
+
+echo '<br><br>  <br>';
 
 
 
