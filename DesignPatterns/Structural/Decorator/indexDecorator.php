@@ -45,7 +45,7 @@ class Webservice implements RenderableInterface
 {
     private $data;
 
-    public function __construct(string $data)
+    public function __construct($data)
     {
         $this->data = $data;
     }

@@ -28,7 +28,7 @@ class DatabaseConfiguration
      */
     private $password;
 
-    public function __construct(string $host, int $port, string $username, string $password)
+    public function __construct($host, $port, $username, $password)
     {
         $this->host = $host;
         $this->port = $port;

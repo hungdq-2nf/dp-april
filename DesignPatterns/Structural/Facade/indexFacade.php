@@ -30,7 +30,7 @@ class Facade
 
     private $bios;
 
-    public function __construct(BiosInterface $bios, OsInterface $os)
+    public function __construct($bios, $os)
     {
         $this->bios = $bios;
         $this->os = $os;
@@ -38,6 +38,7 @@ class Facade
 
     public function turnOn()
     {
+        echo 1;
         $this->bios->execute();
         $this->bios->waitForKeyPress();
         $this->bios->launch($this->os);
@@ -45,13 +46,14 @@ class Facade
 
     public function turnOff()
     {
+        echo 2;
         $this->os->halt();
         $this->bios->powerDown();
     }
 }
 
 echo '<br><br> Facade <br>';
-$facade = new Facade();
+$facade = new Facade(BiosInterface::class, OsInterface::class);
 $facade->turnOn();
 $facade->turnOff();
 

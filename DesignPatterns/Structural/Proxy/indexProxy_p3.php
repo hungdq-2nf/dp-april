@@ -2,31 +2,31 @@
 
 interface AnimalFeeder
 {
-    public function __construct(string $petName);
+    public function __construct($petName);
 
-    public function dropFood(int $hungerLevel, bool $water = false): string;
+    public function dropFood($hungerLevel, $water);
 
-    public function displayFood(int $hungerLevel): string;
+    public function displayFood($hungerLevel);
 }
 
 class Cat implements AnimalFeeder
 {
-    public function __construct(string $petName)
+    public function __construct($petName)
     {
         $this->petName = $petName;
     }
 
-    public function dropFood(int $hungerLevel, bool $water = false): string
+    public function dropFood($hungerLevel, $water)
     {
         return $this->selectFood($hungerLevel) . ($water ? ' with water' : '');
     }
 
-    public function displayFood(int $hungerLevel): string
+    public function displayFood($hungerLevel)
     {
         return $this->selectFood($hungerLevel);
     }
 
-    protected function selectFood(int $hungerLevel): string
+    protected function selectFood($hungerLevel)
     {
         switch ($hungerLevel) {
             case 0:
@@ -44,7 +44,7 @@ class Cat implements AnimalFeeder
 
 class Dog
 {
-    public function __construct(string $petName)
+    public function __construct($petName)
     {
         if (strlen($petName) > 10) {
             throw new \Exception('Name too long.');
@@ -52,17 +52,17 @@ class Dog
         $this->petName = $petName;
     }
 
-    public function dropFood(int $hungerLevel, bool $water = false): string
+    public function dropFood($hungerLevel, $water)
     {
         return $this->selectFood($hungerLevel) . ($water ? ' with water' : '');
     }
 
-    public function displayFood(int $hungerLevel): string
+    public function displayFood($hungerLevel)
     {
         return $this->selectFood($hungerLevel);
     }
 
-    protected function selectFood(int $hungerLevel): string
+    protected function selectFood($hungerLevel)
     {
         if ($hungerLevel == 1) {
             return "food for dog 1";
@@ -78,7 +78,7 @@ class AnimalFeederProxy
 {
     protected $instance;
 
-    public function __construct(string $feeder, string $name)
+    public function __construct($feeder, $name)
     {
         $class = __NAMESPACE__ . '\\AnimalFeeders' . $feeder;
         $this->instance = new $class($name);
@@ -87,6 +87,32 @@ class AnimalFeederProxy
     public function __call($name, $arguments)
     {
         return call_user_func_array([$this->instance, $name], $arguments);
+    }
+}
+
+class AnimalFeedersCat
+{
+    public function displayFood($hungerLevel)
+    {
+        echo 'displayFood Cat <br>';
+    }
+
+    public function dropFood($hungerLevel, $water)
+    {
+        echo 'dropFood Cat <br>';
+    }
+}
+
+class AnimalFeedersDog
+{
+    public function displayFood($hungerLevel)
+    {
+        echo 'displayFood Dog <br>';
+    }
+
+    public function dropFood($hungerLevel, $water)
+    {
+        echo 'dropFood Dog <br>';
     }
 }
 
@@ -114,13 +140,27 @@ $dog->dropFood(1, true);
 $dog->displayFood(2);
 
 
+class AnimalFeedersFeeder1
+{
+    function methodCat1(){
+        echo 'methodCat1';
+    }
+}
+
+class AnimalFeedersFeeder2
+{
+    function methodDog1(){
+        echo 'methodDog1';
+    }
+}
+
 echo '<br><br> AnimalFeederProxy Cat 1<br>';
-$animalFeederProxy = new AnimalFeederProxy('Feeder 1', 'Cat 1');
-$animalFeederProxy->__call('Cat 1', 1);
+$animalFeederProxy = new AnimalFeederProxy('Feeder1', 'Cat 1');
+$animalFeederProxy->__call('methodCat1', [1]);
 
 echo '<br><br> AnimalFeederProxy Dog 1<br>';
-$animalFeederProxy = new AnimalFeederProxy('Feeder 2', 'Dog 1');
-$animalFeederProxy->__call('Dog 1', 1);
+$animalFeederProxy = new AnimalFeederProxy('Feeder2', 'Dog 1');
+$animalFeederProxy->__call('methodDog1', [1]);
 
 
 

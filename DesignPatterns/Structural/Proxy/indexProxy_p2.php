@@ -61,6 +61,7 @@ for ($i = 0; $i < 10; $i++) {
 // Now it's time to read the contents of file3.txt
 $file3 = $proxies[3]->lazyLoad();
 
+echo '<br><br> $file3->getContents() <br>';
 // echo the contents of file3.txt
 echo $file3->getContents();
 
@@ -71,7 +72,7 @@ $readFile = new ReadFile('file1.txt');
 
 echo '<br><br> ReadFileProxy <br>';
 $readFileProxy = new ReadFileProxy('file2.txt');
-$readFileProxy->lazyLoad();
+echo $readFileProxy->lazyLoad()->getContents();
 
 
 

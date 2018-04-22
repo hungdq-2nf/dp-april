@@ -78,14 +78,14 @@ class Post
      * @param string $text
      * @param string $title
      */
-    public function __construct($id, string $title, string $text)
+    public function __construct($id, $title, $text)
     {
         $this->id = $id;
         $this->text = $text;
         $this->title = $title;
     }
 
-    public function setId(int $id)
+    public function setId($id)
     {
         $this->id = $id;
     }

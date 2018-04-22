@@ -22,7 +22,6 @@ interface EBookInterface
     public function pressNext();
 
     public function getPage();
-//    public function getPage(): array;
 }
 
 class Book implements BookInterface

@@ -34,7 +34,7 @@ abstract class Text
      */
     protected $text;
 
-    public function __construct(string $text)
+    public function __construct($text)
     {
         $this->text = $text;
     }

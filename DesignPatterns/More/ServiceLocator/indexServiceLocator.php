@@ -34,7 +34,7 @@ class ServiceLocator
      * @param object $service
      * @param bool $share
      */
-    public function addInstance(string $class, $service, bool $share = true)
+    public function addInstance($class, $service, $share)
     {
         $this->services[$class] = $service;
         $this->instantiated[$class] = $service;
@@ -48,13 +48,13 @@ class ServiceLocator
      * @param array $params
      * @param bool $share
      */
-    public function addClass(string $class, array $params, bool $share = true)
+    public function addClass($class, array $params, $share)
     {
         $this->services[$class] = $params;
         $this->shared[$class] = $share;
     }
 
-    public function has(string $interface): bool
+    public function has($interface)
     {
         return isset($this->services[$interface]) || isset($this->instantiated[$interface]);
     }
@@ -64,7 +64,7 @@ class ServiceLocator
      *
      * @return object
      */
-    public function get(string $class)
+    public function get($class)
     {
         if (isset($this->instantiated[$class])
             && $this->shared[$class]

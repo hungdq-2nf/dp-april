@@ -1,5 +1,6 @@
 <?php
-require 'indexProxy.php';
+echo '<br><br> _p1:';
+require 'indexRegistry.php';
 
 
 echo '<br><br> _p2:';

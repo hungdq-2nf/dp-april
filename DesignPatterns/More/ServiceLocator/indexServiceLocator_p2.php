@@ -7,14 +7,14 @@ interface Car {
 class BMW implements Car {
     public function run()
     {
-        echo 'Bi em ví...!';
+        echo 'BMW !';
     }
 }
 
 class Mercedes implements Car {
     public function run()
     {
-        echo 'Mẹc xà đí...!';
+        echo 'Mercedes !';
     }
 }
 
