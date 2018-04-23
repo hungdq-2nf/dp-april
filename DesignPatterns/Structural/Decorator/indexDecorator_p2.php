@@ -27,7 +27,7 @@ abstract class CarFeature implements Car
 {
     protected $car;
 
-    function __construct(Car $car)
+    function __construct($car)
     {
         $this->car = $car;
     }
@@ -41,12 +41,14 @@ class SunRoof extends CarFeature
 {
     function cost()
     {
-        return $this->car->cost() + 1500;
+//        return $this->car->cost() + 1500;
+        return 30000 + 1500;
     }
 
     function description()
     {
-        return $this->car->description() . ",  cửa sổ trời";
+//        return $this->car->description() . ",  cửa sổ trời";
+        return "Xe SUV" . ",  cửa sổ trời";
     }
 }
 
@@ -54,12 +56,14 @@ class LeatherSeats extends CarFeature
 {
     function cost()
     {
-        return $this->car->cost() + 1000;
+//        return $this->car->cost() + 1000;
+        return 30000 + 1000;
     }
 
     function description()
     {
-        return $this->car->description() . ",  ghế bọc da";
+//        return $this->car->description() . ",  ghế bọc da";
+        return "Xe SUV" . ",  ghế bọc da";
     }
 }
 
@@ -83,8 +87,8 @@ $basicCar = new Suv();
 $carWithSunRoof = new SunRoof($basicCar);
 
 // Kiểm tra các tính năng trên xe đã có tùy chọn
-echo $carWithSunRoof->description();
-echo " giá " . $carWithSunRoof->cost();
+echo $carWithSunRoof->description() . '<br>';
+echo " giá " . $carWithSunRoof->cost() . '<br>';
 
 // 1. Tạo một xe cơ bản
 $basicCar = new Suv();
@@ -99,23 +103,23 @@ $carWithSunRoofAndLeatherSeats = new LeatherSeats($carWithSunRoof);
 $carFullOption = new GPSNavigation($carWithSunRoofAndLeatherSeats);
 
 // 5. Kiểm tra xe với tùy chọn đầy đủ
-echo $carFullOption->description();
-echo " giá " . $carFullOption->cost();
+echo $carFullOption->description() . '<br>';
+echo " giá " . $carFullOption->cost() . '<br>';
 
 echo '<br><br> Suv <br>';
 $suv = new Suv();
-echo $suv->cost();
-echo $suv->description();
+echo $suv->cost() . '<br>';
+echo $suv->description() . '<br>';
 
 echo '<br><br> SunRoof <br>';
-$sunRoof = new SunRoof();
-echo $sunRoof->cost();
-echo $sunRoof->description();
+$sunRoof = new SunRoof(Car::class);
+echo $sunRoof->cost() . '<br>';
+echo $sunRoof->description() . '<br>';
 
 echo '<br><br> LeatherSeats <br>';
-$leatherSeats = new LeatherSeats();
-echo $leatherSeats->cost();
-echo $leatherSeats->description();
+$leatherSeats = new LeatherSeats(Car::class);
+echo $leatherSeats->cost() . '<br>';
+echo $leatherSeats->description() . '<br>';
 
 
 

@@ -15,7 +15,8 @@ abstract class RendererDecorator implements RenderableInterface
 {
     protected $wrapped;
 
-    public function __construct(RenderableInterface $renderer)
+//    public function __construct(RenderableInterface $renderer)
+    public function __construct($renderer)
     {
         $this->wrapped = $renderer;
     }
@@ -25,7 +26,8 @@ class JsonRenderer extends RendererDecorator
 {
     public function renderData()
     {
-        return json_encode($this->wrapped->renderData());
+        echo 'JsonRenderer';
+//        return json_encode($this->wrapped->renderData());
     }
 }
 
@@ -34,7 +36,8 @@ class XmlRenderer extends RendererDecorator
     public function renderData()
     {
         $doc = new \DOMDocument();
-        $data = $this->wrapped->renderData();
+//        $data = $this->wrapped->renderData();
+        $data = 'data XmlRenderer';
         $doc->appendChild($doc->createElement('content', $data));
 
         return $doc->saveXML();
@@ -56,16 +59,16 @@ class Webservice implements RenderableInterface
     }
 }
 
-echo '<br><br> $jsonRenderer->renderData() <br>';
-$jsonRenderer = new JsonRenderer();
+echo '<br> $jsonRenderer->renderData() <br>';
+$jsonRenderer = new JsonRenderer(RenderableInterface::class);
 $jsonRenderer->renderData();
 
-echo '<br><br> $xmlRenderer->renderData() <br>';
-$xmlRenderer = new XmlRenderer();
+echo '<br> $xmlRenderer->renderData() <br>';
+$xmlRenderer = new XmlRenderer(RenderableInterface::class);
 $xmlRenderer->renderData();
 
-echo '<br><br> $webservice->renderData() <br>';
-$webservice = new Webservice();
+echo '<br> $webservice->renderData() <br>';
+$webservice = new Webservice('data Webservice');
 $webservice->renderData();
 
 

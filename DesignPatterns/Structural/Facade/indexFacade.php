@@ -52,12 +52,11 @@ class Facade
     }
 }
 
-echo '<br><br> Facade <br>';
+echo '<br> Facade <br>';
 $facade = new Facade(BiosInterface::class, OsInterface::class);
-$facade->turnOn();
-$facade->turnOff();
+//$facade->turnOn();
+//$facade->turnOff();
 
-echo '<br><br>  <br>';
 
 
 

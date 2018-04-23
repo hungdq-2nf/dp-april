@@ -1,5 +1,5 @@
 <?php
-echo '---- Structural > Composite <br><br>';
+echo '---- Structural > Composite <br>';
 
 /* Structural > Composite
  *
@@ -42,6 +42,8 @@ class Form implements RenderableInterface
     {
         $formCode = '<form>';
 
+        $this->elements = [1,2];
+
         foreach ($this->elements as $element) {
             $formCode .= $element->render();
         }
@@ -51,26 +53,27 @@ class Form implements RenderableInterface
         return $formCode;
     }
 
-    public function addElement(RenderableInterface $element)
+//    public function addElement(RenderableInterface $element)
+    public function addElement($element)
     {
         $this->elements[] = $element;
     }
 }
 
-
-echo '<br><br> $inputElement->render() <br>';
+echo '<br> $inputElement->render() <br>';
 $inputElement = new InputElement();
 echo $inputElement->render();
 
-echo '<br><br> $textElement->render() <br>';
-$textElement = new TextElement();
+echo '<br> $textElement->render() <br>';
+$textElement = new TextElement('text 1');
 echo $textElement->render();
 
-echo '<br><br> $textElement->render() <br>';
+echo '<br> $form->render() <br>';
 $form = new Form();
-echo $form->render();
+//echo $form->render();
 
 $element = 1;
-$form->addElement($element);
+$element = [1, 2];
+$form->addElement(RenderableInterface::class);
 
 

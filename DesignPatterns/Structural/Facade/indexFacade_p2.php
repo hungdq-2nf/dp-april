@@ -4,21 +4,21 @@
 // Class share gì đó lên Facebook
 class Facebook {
     function share($status, $url) {
-        echo ('Facebook:' . $status . ' from:' . $url);
+        echo 'Facebook: ' . $status . ' from:' . $url . '<br>';
     }
 }
 
 // Class share gì đó lên Google+.
 class Google {
     function share($url) {
-        echo ('Shared on Google+:' . $url);
+        echo 'Google+: ' . $url . '<br>';
     }
 }
 
 // Class tweet lên Twitter
 class Twitter {
     function tweet($url, $title) {
-        echo ('Tweet url:' . $url . ' title:' . $title);
+        echo 'Tweet: ' . $url . ', title:' . $title . '<br>';
     }
 }
 
@@ -59,11 +59,11 @@ $twitterObj  = new Twitter();
 $shareObj = new ShareFacade($facebookObj, $googleplusObj, $twitterObj);
 
 // Gọi một phương thức để chia sẻ tất cả lên mạng xã hội
-$shareObj->share('https://allaravel.com/facade-pattern-don-gian-trong-viet-code-php', 'Facade Pattern đơn giản trong viết code PHP', 'Pattern được dùng nhiều nhất trong lập trình hướng đối tượng');
+$shareObj->share('url 1', 'Title 1', 'Status 1');
 
 //Ví dụ trên đã cho thấy thay vì chúng ta phải gọi 3 phương thức để chia sẻ nội dung lên mạng xã hội thì tất cả đã được gói vào trong một phương thức duy nhất. Như vậy việc viết code trở nên gọn gàng hơn rất nhiều.
 
-echo '<br><br>  <br>';
+echo '<br> - <br>';
 $fb = new Facebook();
 $fb->share('status fb', 'url fb');
 
@@ -73,8 +73,8 @@ $gg->share('url gg');
 $tw = new Twitter();
 $tw->tweet('url tw', 'title tw');
 
-echo '<br><br>  <br>';
+echo '<br><br> ShareFacade <br>';
 $shareFacade = new ShareFacade($fb, $gg, $tw);
-$shareFacade->share('url', 'title', 'status');
+$shareFacade->share('url 2', 'title 2', 'status 2');
 
 

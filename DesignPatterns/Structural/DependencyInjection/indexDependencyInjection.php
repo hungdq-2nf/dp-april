@@ -90,10 +90,10 @@ class DatabaseConnection
 
 echo '<br><br> DatabaseConfiguration <br>';
 $dbConfig = new DatabaseConfiguration('127.0.0.1', 80, 'root', '123');
-echo $dbConfig->getHost();
-echo $dbConfig->getPort();
-echo $dbConfig->getUsername();
-echo $dbConfig->getPassword();
+echo $dbConfig->getHost() .' <br>';
+echo $dbConfig->getPort() .' <br>';
+echo $dbConfig->getUsername() .' <br>';
+echo $dbConfig->getPassword() .' <br>';
 
 echo '<br><br> $dbConnect->getDsn() <br>';
 $dbConnect = new DatabaseConnection($dbConfig);

@@ -140,22 +140,25 @@ $fontend->remove($taylor);
 // Xóa các đối tượng
 unset($fontend, $kulit, $evan, $taylor);
 
+echo '<br> Team() <br>';
+$team = new Team('team 1');
+$employee1 = new Employee('emp 1');
+$employee2 = new Employee('emp 2');
 
-echo '<br><br>  <br>';
-$team = new Team();
-$team->add('emp 1');
-$team->remove('emp 1');
+$team->add($employee1);
+$team->remove($employee2);
 $team->assignTask('task 1');
 $team->completeTask('task 1');
 echo $team->getCount();
 
 
-echo '<br><br>  <br>';
-$employee = new Employee();
-$employee->add('emp 2');
-$employee->remove('emp 2');
-$employee->assignTask('task 2');
-$employee->completeTask('task 2');
+echo '<br><br> Employee() <br>';
+$employee3 = new Employee('emp 3');
+
+$employee3->add($employee3);
+$employee3->remove($employee3);
+$employee3->assignTask('task 3');
+$employee3->completeTask('task 3');
 
 
 

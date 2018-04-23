@@ -7,24 +7,24 @@
 //4. Sinh đơn bán hàng.
 
 // Quá trình xử lý đơn hàng
-$productID = $_GET['productId'];
-$qtyCheck = new productQty();
-if($qtyCheck->checkQty($productID) > 0) {
-    // Thêm hàng vào giỏ hàng
-    $addToCart = new addToCart($productID);
-
-    // Tính toán phí vận chuyển
-    $shipping = new shippingCharge();
-    $shipping->updateCharge();
-
-    // Tính toán tiền chiết khấu
-    $discount = new discount();
-    $discount->applyDiscount();
-
-    // Sinh đơn hàng
-    $order = new order();
-    $order->generateOrder();
-}
+$productID = 1;//$_GET['productId'];
+$qtyCheck = 2;//new productQty();
+//if($qtyCheck > 0) {
+//    // Thêm hàng vào giỏ hàng
+//    $addToCart = new addToCart($productID);
+//
+//    // Tính toán phí vận chuyển
+//    $shipping = new shippingCharge();
+//    $shipping->updateCharge();
+//
+//    // Tính toán tiền chiết khấu
+//    $discount = new discount();
+//    $discount->applyDiscount();
+//
+//    // Sinh đơn hàng
+//    $order = new order();
+//    $order->generateOrder();
+//}
 
 //Đoạn code trên hoạt động hoàn toàn bình thường, tuy nhiên chúng ta gọi đến quá nhiều các phương thức trong xử lý đơn hàng. Nếu như việc xử lý này ở nhiều nơi, thật khó khăn khi cần thay đổi tất cả những chỗ có code này. Facade Pattern giải quyết vấn đề này bằng cách đặt các lời gọi phương thức này vào trong một class Facade:
 
@@ -51,7 +51,7 @@ class productOrderFacade {
 
     private function addToCart () {
         /* .. Thêm sản phẩm vào giỏ hàng ..  */
-        echo 'add To Cart done !';
+        echo 'add To Cart done ! <br>';
     }
 
     private function qtyCheck() {
@@ -66,24 +66,27 @@ class productOrderFacade {
     }
 
     private function calulateShipping() {
-        $shipping = new shippingCharge();
-        $shipping->calculateCharge();
+        echo 'calulateShipping <br>';
+//        $shipping = new shippingCharge();
+//        $shipping->calculateCharge();
     }
 
     private function applyDiscount() {
-        $discount = new discount();
-        $discount->applyDiscount();
+        echo 'applyDiscount <br>';
+//        $discount = new discount();
+//        $discount->applyDiscount();
     }
 
     private function placeOrder() {
-        $order = new order();
-        $order->generateOrder();
+        echo 'placeOrder <br>';
+//        $order = new order();
+//        $order->generateOrder();
     }
 }
 
 //Như vậy chúng ta đã có một class ProductOrder dạng Facade, chúng ta sẽ sử dụng nó ở những chỗ cần phát sinh đơn hàng:
 
-$productID = $_GET['productId'];//1
+$productID = 1;//$_GET['productId'];
 
 // Chỉ cần hai dòng code thay cho rất nhiều dòng code xử lý đơn hàng cho những nơi cần xử lý đơn hàng
 $order = new productOrderFacade($productID);

@@ -1,5 +1,5 @@
 <?php
-echo '---- Creational > Factory Method <br><br>';
+echo '---- Creational > Factory Method <br>';
 
 /* Creational > Factory Method
  *
@@ -8,7 +8,7 @@ echo '---- Creational > Factory Method <br><br>';
 
 interface VehicleInterface
 {
-    public function setColor(string $rgb);
+    public function setColor($rgb);
 }
 
 class Bicycle implements VehicleInterface
@@ -18,7 +18,7 @@ class Bicycle implements VehicleInterface
      */
     private $color;
 
-    public function setColor(string $rgb)
+    public function setColor($rgb)
     {
         $this->color = $rgb;
     }
@@ -31,7 +31,7 @@ class CarFerrari implements VehicleInterface
      */
     private $color;
 
-    public function setColor(string $rgb)
+    public function setColor($rgb)
     {
         $this->color = $rgb;
     }
@@ -44,7 +44,7 @@ class CarMercedes implements VehicleInterface
      */
     private $color;
 
-    public function setColor(string $rgb)
+    public function setColor($rgb)
     {
         $this->color = $rgb;
     }
@@ -62,9 +62,9 @@ abstract class FactoryMethod
     const CHEAP = 'cheap';
     const FAST = 'fast';
 
-    abstract protected function createVehicle(string $type);
+    abstract protected function createVehicle($type);
 
-    public function create(string $type)
+    public function create($type)
     {
         $obj = $this->createVehicle($type);
         $obj->setColor('black');
@@ -75,7 +75,7 @@ abstract class FactoryMethod
 
 class GermanFactory extends FactoryMethod
 {
-    protected function createVehicle(string $type)
+    protected function createVehicle($type)
     {
         switch ($type) {
             case parent::CHEAP:
@@ -94,7 +94,7 @@ class GermanFactory extends FactoryMethod
 
 class ItalianFactory extends FactoryMethod
 {
-    protected function createVehicle(string $type)
+    protected function createVehicle($type)
     {
         switch ($type) {
             case parent::CHEAP:
@@ -107,35 +107,37 @@ class ItalianFactory extends FactoryMethod
     }
 }
 
-echo '<br><br> Bicycle <br>';
+echo '<br> Bicycle <br>';
 $bicycle = new Bicycle();
 $bicycle->setColor('#eee');
 
-echo '<br><br> CarFerrari <br>';
+echo '<br> CarFerrari <br>';
 $carFerrari = new CarFerrari();
 $carFerrari->setColor('#fff');
 
-echo '<br><br> CarMercedes <br>';
+echo '<br> CarMercedes <br>';
 $carMercedes = new CarMercedes();
 $carMercedes = $carMercedes->setColor('#000');
 
-echo '<br><br> GermanFactory <br>';
+echo '<br> GermanFactory <br>';
 $germanFactory = new GermanFactory();
 
 echo '<br> germanFactory type cheap: <br>';
-echo $germanFactory->create('cheap');
+//echo $germanFactory->create('cheap');
+//echo $germanFactory->create(FactoryMethod::CHEAP);
+//echo $germanFactory->create(0);
 
 echo '<br> germanFactory type fast: <br>';
-echo $germanFactory->create('fast');
+//echo $germanFactory->create('fast');
 
 
 echo '<br><br> ItalianFactory <br>';
 $italianFactory = new ItalianFactory();
 
 echo '<br> $italianFactory type cheap: <br>';
-echo $italianFactory->create('cheap');
+//echo $italianFactory->create('cheap');
 
 echo '<br> $italianFactory type fast: <br>';
-echo $italianFactory->create('fast');
+//echo $italianFactory->create('fast');
 
 

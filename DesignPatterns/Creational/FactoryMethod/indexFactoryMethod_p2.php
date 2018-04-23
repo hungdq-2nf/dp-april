@@ -140,22 +140,46 @@ class Rectangle
 }
 
 #------------ KẾT THÚC ĐỊNH NGHĨA CLASS ----------------------#
+echo '<br><br> rectangle <br>';
 
-if (isset($_GET['shape'], $_GET['dimensions'])) {
+$_GET['shape'] = 'rectangle';
+$_GET['dimensions'] = 100;
+
+$_GET['s'] = 'rectangle';
+$_GET['d'] = [10, 20, 30];
+
+if (isset($_GET['shape'], $_GET['dimensions'])
+    && $_GET['shape'] == 'rectangle'
+) {
     // Tạo ra một đối tượng từ với thông số từ query string
     $obj = ShapeFactory::Create($_GET['s'], $_GET['d']);
 
-    echo "<h2>Tạo ra hình {$_GET['shape']}:</h2>";
+    echo "<h4>Tạo ra hình {$_GET['shape']}:</h4>";
     echo '<p>Diện tích hình: ' . $obj->getArea() . '</p>';
     echo '<p>Chu vi hình: ' . $obj->getPerimeter() . '</p>';
 } else {
     echo '<p>Cần cung cấp hình dạng và kích thước!</p>';
 }
 
+echo '<br> triangle <br>';
 
-echo '<br><br>  <br>';
+$_GET['shape'] = 'triangle';
+$_GET['dimensions'] = 200;
 
+$_GET['s'] = 'triangle';
+$_GET['d'] = [10, 20, 30];
 
-echo '<br><br>  <br>';
+if (isset($_GET['shape'], $_GET['dimensions'])
+    && $_GET['shape'] == 'triangle'
+) {
+    // Tạo ra một đối tượng từ với thông số từ query string
+    $obj = ShapeFactory::Create($_GET['s'], $_GET['d']);
+
+    echo "<h4>Tạo ra hình {$_GET['shape']}:</h4>";
+    echo '<p>Diện tích hình: ' . $obj->getArea() . '</p>';
+    echo '<p>Chu vi hình: ' . $obj->getPerimeter() . '</p>';
+} else {
+    echo '<p>Cần cung cấp hình dạng và kích thước!</p>';
+}
 
 

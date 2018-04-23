@@ -1,5 +1,5 @@
 <?php
-echo '---- Creational > Builder <br><br>';
+echo '---- Creational > Builder <br>';
 
 /* Creational > Builder
  *
@@ -26,6 +26,11 @@ abstract class Vehicle
 
 class Car extends Vehicle
 {
+    public function setPart($key, $value)
+    {
+        echo 1;
+//        $this->data[$key] = $value;
+    }
 }
 
 class Truck extends Vehicle
@@ -67,6 +72,7 @@ class CarBuilder implements BuilderInterface
     public function addDoors()
     {
         $this->car->setPart('rightDoor', new Door());
+//        $this->car->setPart('rightDoor', 1);
         $this->car->setPart('leftDoor', new Door());
         $this->car->setPart('trunkLid', new Door());
     }
@@ -148,7 +154,7 @@ class TruckBuilder implements BuilderInterface
 }
 
 
-echo '<br><br> CarBuilder <br>';
+echo '<br> CarBuilder <br>';
 $carBuilder = new CarBuilder();
 $carBuilder->addDoors();
 $carBuilder->addEngine();
