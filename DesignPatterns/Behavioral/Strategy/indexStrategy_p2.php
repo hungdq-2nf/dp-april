@@ -128,31 +128,21 @@ class StudentsList
 // Tạo mảng sinh viên, mỗi sinh viên có cấu trúc:
 // studentID => array('first_name' => 'First Name', 'last_name' => 'Last Name', 'grade' => XX.X)
 $students = array(
-    256 => array(
-        'first_name' => 'Tuấn',
-        'last_name' => 'Trần Đăng',
-        'grade' => 98.5
-    ),
     2 => array(
-        'first_name' => 'An',
-        'last_name' => 'Nguyễn Xuân',
-        'grade' => 85.1
+        'first_name' => 'Hung',
+        'last_name' => 'Audi',
+        'grade' => 90
     ),
-    9 => array(
-        'first_name' => 'Dương',
-        'last_name' => 'Nguyễn Ngọc',
-        'grade' => 94.0
+    5 => array(
+        'first_name' => 'Vu',
+        'last_name' => 'Lambo',
+        'grade' => 80
     ),
-    364 => array(
-        'first_name' => 'Chiến',
-        'last_name' => 'Hoàng Văn',
-        'grade' => 85.1
+    1 => array(
+        'first_name' => 'Phu',
+        'last_name' => 'Ferrari',
+        'grade' => 60
     ),
-    68 => array(
-        'first_name' => 'Phương',
-        'last_name' => 'Trần Thanh',
-        'grade' => 74.6
-    )
 );
 
 // Tạo đối tượng

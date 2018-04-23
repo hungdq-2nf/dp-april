@@ -7,14 +7,14 @@ interface Car {
 class BMW implements Car {
     public function run()
     {
-        echo 'Bi em ví...!';
+        echo 'BMW !';
     }
 }
 
 class Mercedes implements Car {
     public function run()
     {
-        echo 'Mẹc xà đí...!';
+        echo 'Mercedes !';
     }
 }
 
@@ -72,27 +72,68 @@ class ServiceLocator implements ServiceLocatorInterface {
         return $this;
     }
 }
-
+echo '<br> $mec->run() <br>';
 $mec = new Mercedes();
-$bmv = new BMV();
+echo $mec->run();
 
+echo '<br> $bmv->run() <br>';
+$bmv = new BMV();
+echo $bmv->run();
+
+echo '<br> $dirver1->drive() <br>';
 // Lái xe 1 thích lái Mercedes
 $driver1 = new Driver($mec);
 $dirver1->drive(); // Mẹc xà đí...!
 
+echo '<br> $dirver2->drive() <br>';
 // Lái xe 2 thích lái BMV
 $driver2 = new Driver($bmv);
 $dirver2->drive(); // Bi em ví...!
 
 // Tạo ra cái gara
-$locator = new ServiceLocator;
-$locator->set('mec', new Mercerdes());
-$locator->set('bmv', new BMV());
+$serviceLocator = new ServiceLocator();
+
+echo '<br> $serviceLocator->set(\'mec\', new Mercerdes()) <br>';
+$serviceLocator->set('mec', new Mercerdes());
+
+echo '<br> $serviceLocator->get(\'mec\') <br>';
+echo $serviceLocator->get('mec');
+
+echo '<br> $serviceLocator->has(\'mec\') <br>';
+echo $serviceLocator->has('mec');
+
+echo '<br> $serviceLocator->remove(\'mec\') <br>';
+echo $serviceLocator->remove('mec');
+
+echo '<br> $serviceLocator->clear() <br>';
+echo $serviceLocator->clear();
+
+
+echo '<br> $serviceLocator->set(\'bmv\', new BMV()) <br>';
+$serviceLocator->set('bmv', new BMV());
+
+echo '<br> $serviceLocator->get(\'bmw\') <br>';
+echo $serviceLocator->get('bmw');
+
+echo '<br> $serviceLocator->has(\'bmw\') <br>';
+echo $serviceLocator->has('bmw');
+
+echo '<br> $serviceLocator->remove(\'bmw\') <br>';
+echo $serviceLocator->remove('bmw');
+
+echo '<br> $serviceLocator->clear() <br>';
+echo $serviceLocator->clear();
+
 
 // Tạo ra ông lái xe và lấy xe Mercedes từ gara
-$driver = new Driver($locator, 'mec');
+$driver = new Driver($serviceLocator, 'mec');
 $driver->drive(); // Mẹc xà đí...!
 
+
+echo '<br><br>  <br>';
+
+
+echo '<br><br>  <br>';
 
 
 

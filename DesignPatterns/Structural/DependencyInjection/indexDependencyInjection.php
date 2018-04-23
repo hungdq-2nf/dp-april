@@ -28,7 +28,7 @@ class DatabaseConfiguration
      */
     private $password;
 
-    public function __construct(string $host, int $port, string $username, string $password)
+    public function __construct($host, $port, $username, $password)
     {
         $this->host = $host;
         $this->port = $port;
@@ -87,6 +87,19 @@ class DatabaseConnection
         );
     }
 }
+
+echo '<br><br> DatabaseConfiguration <br>';
+$dbConfig = new DatabaseConfiguration('127.0.0.1', 80, 'root', '123');
+echo $dbConfig->getHost();
+echo $dbConfig->getPort();
+echo $dbConfig->getUsername();
+echo $dbConfig->getPassword();
+
+echo '<br><br> $dbConnect->getDsn() <br>';
+$dbConnect = new DatabaseConnection($dbConfig);
+echo $dbConnect->getDsn();
+
+
 
 
 

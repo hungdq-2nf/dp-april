@@ -3,7 +3,7 @@
 
 //register - đăng ký      < Structural
 
-class Registry
+class Registry2
 {
     protected $_objects = array();
 
@@ -19,16 +19,30 @@ class Registry
 }
 
 // Tạo ra đối tượng kết nối database và đối tượng registry
-$db = new DatabaseConnection();
-$registry = new Registry();
+//$db = new DatabaseConnection();
+//$registry = new Registry();
+//
+//// Đưa đối tượng $db vào danh bạ
+//$registry->add("database", $db);
+//
+//// Sử dụng $registry
+//$user = new User($registry);
+//$admin = new Admin($registry);
+//
+//// Hoặc có thể lấy đối tượng $db để thực hiện các công việc khác
+//$databaseObj = $registry->get("database");
+//$databaseObj->query("SELECT username FROM users" . " WHERE id=$userId");
 
-// Đưa đối tượng $db vào danh bạ
-$registry->add("database", $db);
 
-// Sử dụng $registry
-$user = new User($registry);
-$admin = new Admin($registry);
 
-// Hoặc có thể lấy đối tượng $db để thực hiện các công việc khác
-$databaseObj = $registry->get("database");
-$databaseObj->query("SELECT username FROM users" . " WHERE id=$userId");
+echo '<br><br> Registry2 <br>';
+$registry = new Registry2();
+$obj = 'obj';
+$registry->set('name', $obj);
+echo $registry->get('name');
+
+
+echo '<br><br>  <br>';
+
+
+

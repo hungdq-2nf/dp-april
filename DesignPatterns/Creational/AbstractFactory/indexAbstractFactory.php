@@ -34,7 +34,7 @@ abstract class Text
      */
     protected $text;
 
-    public function __construct(string $text)
+    public function __construct($text)
     {
         $this->text = $text;
     }
@@ -43,10 +43,29 @@ abstract class Text
 class JsonText extends Text
 {
     // do something here
+    function __construct($text)
+    {
+        parent::__construct($text);
+        echo 'json text: '.$text;
+    }
 }
 
 class HtmlText extends Text
 {
     // do something here
+    function __construct($text)
+    {
+        parent::__construct($text);
+        echo 'html text: '.$text;
+    }
 }
+
+echo '<br><br> $jsonText <br>';
+$jsonText = new JsonText('1');
+//echo $jsonText;
+
+echo '<br><br> $htmlText <br>';
+$htmlText = new HtmlText('2');
+//echo $htmlText;
+
 

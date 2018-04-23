@@ -52,6 +52,7 @@ class CarMercedes implements VehicleInterface
     public function addAMGTuning()
     {
         // do additional tuning here
+        echo 'add AMG Tuning here';
     }
 }
 
@@ -105,4 +106,36 @@ class ItalianFactory extends FactoryMethod
         }
     }
 }
+
+echo '<br><br> Bicycle <br>';
+$bicycle = new Bicycle();
+$bicycle->setColor('#eee');
+
+echo '<br><br> CarFerrari <br>';
+$carFerrari = new CarFerrari();
+$carFerrari->setColor('#fff');
+
+echo '<br><br> CarMercedes <br>';
+$carMercedes = new CarMercedes();
+$carMercedes = $carMercedes->setColor('#000');
+
+echo '<br><br> GermanFactory <br>';
+$germanFactory = new GermanFactory();
+
+echo '<br> germanFactory type cheap: <br>';
+echo $germanFactory->create('cheap');
+
+echo '<br> germanFactory type fast: <br>';
+echo $germanFactory->create('fast');
+
+
+echo '<br><br> ItalianFactory <br>';
+$italianFactory = new ItalianFactory();
+
+echo '<br> $italianFactory type cheap: <br>';
+echo $italianFactory->create('cheap');
+
+echo '<br> $italianFactory type fast: <br>';
+echo $italianFactory->create('fast');
+
 

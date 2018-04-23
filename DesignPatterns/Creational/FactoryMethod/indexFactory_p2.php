@@ -152,5 +152,10 @@ if (isset($_GET['shape'], $_GET['dimensions'])) {
     echo '<p>Cần cung cấp hình dạng và kích thước!</p>';
 }
 
-// Xóa đối tượng
-unset($obj);
+
+echo '<br><br>  <br>';
+
+
+echo '<br><br>  <br>';
+
+

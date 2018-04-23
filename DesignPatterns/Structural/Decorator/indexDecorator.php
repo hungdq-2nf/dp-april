@@ -45,7 +45,7 @@ class Webservice implements RenderableInterface
 {
     private $data;
 
-    public function __construct(string $data)
+    public function __construct($data)
     {
         $this->data = $data;
     }
@@ -55,5 +55,20 @@ class Webservice implements RenderableInterface
         return $this->data;
     }
 }
+
+echo '<br><br> $jsonRenderer->renderData() <br>';
+$jsonRenderer = new JsonRenderer();
+$jsonRenderer->renderData();
+
+echo '<br><br> $xmlRenderer->renderData() <br>';
+$xmlRenderer = new XmlRenderer();
+$xmlRenderer->renderData();
+
+echo '<br><br> $webservice->renderData() <br>';
+$webservice = new Webservice();
+$webservice->renderData();
+
+
+
 
 

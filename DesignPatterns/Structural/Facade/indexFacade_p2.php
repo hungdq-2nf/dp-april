@@ -61,93 +61,20 @@ $shareObj = new ShareFacade($facebookObj, $googleplusObj, $twitterObj);
 // Gọi một phương thức để chia sẻ tất cả lên mạng xã hội
 $shareObj->share('https://allaravel.com/facade-pattern-don-gian-trong-viet-code-php', 'Facade Pattern đơn giản trong viết code PHP', 'Pattern được dùng nhiều nhất trong lập trình hướng đối tượng');
 
-//Ví dụ trên đã cho thấy thay vì chúng ta phải gọi 3 phương thức để chia sẻ nội dung lên mạng xã hội thì tất cả đã được gói vào trong một phương thức duy nhất. Như vậy việc viết code trở nên gọn gàng hơn rất nhiều. Chúng ta cùng đến với một ví dụ khác về quá trình mua hàng trên mạng, quá trình này bao gồm các bước:
+//Ví dụ trên đã cho thấy thay vì chúng ta phải gọi 3 phương thức để chia sẻ nội dung lên mạng xã hội thì tất cả đã được gói vào trong một phương thức duy nhất. Như vậy việc viết code trở nên gọn gàng hơn rất nhiều.
 
-//1. Thêm hàng vào giỏ hàng.
-//2. Tính tiền vận chuyển hàng.
-//3. Tính tiền chiết khấu.
-//4. Sinh đơn bán hàng.
+echo '<br><br>  <br>';
+$fb = new Facebook();
+$fb->share('status fb', 'url fb');
 
-// Quá trình xử lý đơn hàng
-$productID = $_GET['productId'];
-$qtyCheck = new productQty();
-if($qtyCheck->checkQty($productID) > 0) {
-    // Thêm hàng vào giỏ hàng
-    $addToCart = new addToCart($productID);
+$gg = new Google();
+$gg->share('url gg');
 
-    // Tính toán phí vận chuyển
-    $shipping = new shippingCharge();
-    $shipping->updateCharge();
+$tw = new Twitter();
+$tw->tweet('url tw', 'title tw');
 
-    // Tính toán tiền chiết khấu
-    $discount = new discount();
-    $discount->applyDiscount();
+echo '<br><br>  <br>';
+$shareFacade = new ShareFacade($fb, $gg, $tw);
+$shareFacade->share('url', 'title', 'status');
 
-    // Sinh đơn hàng
-    $order = new order();
-    $order->generateOrder();
-}
 
-//Đoạn code trên hoạt động hoàn toàn bình thường, tuy nhiên chúng ta gọi đến quá nhiều các phương thức trong xử lý đơn hàng. Nếu như việc xử lý này ở nhiều nơi, thật khó khăn khi cần thay đổi tất cả những chỗ có code này. Facade Pattern giải quyết vấn đề này bằng cách đặt các lời gọi phương thức này vào trong một class Facade:
-
-class productOrderFacade {
-    public $productID = '';
-    public function __construct($pID) {
-        $this->productID = $pID;
-    }
-    public function generateOrder() {
-        if($this->qtyCheck()) {
-            // Thêm sản phẩm vào giỏ hàng
-            $this->addToCart();
-
-            // Tính toán phí vận chuyển
-            $this->calulateShipping();
-
-            // Tính toán tiền chiết khấu
-            $this->applyDiscount();
-
-            // Xác nhận đơn hàng
-            $this->placeOrder();
-        }
-    }
-
-    private function addToCart () {
-        /* .. Thêm sản phẩm vào giỏ hàng ..  */
-    }
-
-    private function qtyCheck() {
-        // Lấy số lượng sản phẩm từ cơ sở dữ liệu
-        $qty = 100;
-
-        if($qty > 0) {
-            return true;
-        } else {
-            return true;
-        }
-    }
-
-    private function calulateShipping() {
-        $shipping = new shippingCharge();
-        $shipping->calculateCharge();
-    }
-
-    private function applyDiscount() {
-        $discount = new discount();
-        $discount->applyDiscount();
-    }
-
-    private function placeOrder() {
-        $order = new order();
-        $order->generateOrder();
-    }
-}
-
-//Như vậy chúng ta đã có một class ProductOrder dạng Facade, chúng ta sẽ sử dụng nó ở những chỗ cần phát sinh đơn hàng:
-
-$productID = $_GET['productId'];
-
-// Chỉ cần hai dòng code thay cho rất nhiều dòng code xử lý đơn hàng cho những nơi cần xử lý đơn hàng
-$order = new productOrderFacade($productID);
-$order->generateOrder();
-
-//Như đã nói ở trên, 2 dòng xử lý đơn hàng có thể đặt ở nhiều nơi, nếu quy trình xử lý đơn hàng thay đổi, chúng ta chỉ cần thay đổi trong class productOrderFacade.

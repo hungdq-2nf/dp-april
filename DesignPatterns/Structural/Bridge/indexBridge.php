@@ -13,7 +13,7 @@ interface FormatterInterface
 
 class HtmlFormatter implements FormatterInterface
 {
-    public function format(string $text)
+    public function format($text)
     {
         return sprintf('<p>%s</p>', $text);
     }

@@ -15,12 +15,12 @@ class Record
         $this->data = $data;
     }
 
-    public function __set(string $name, string $value)
+    public function __set($name, $value)
     {
         $this->data[$name] = $value;
     }
 
-    public function __get(string $name)
+    public function __get($name)
     {
         if (!isset($this->data[$name])) {
             throw new \OutOfRangeException('Invalid name given');
@@ -50,7 +50,7 @@ class RecordProxy extends Record
         }
     }
 
-    public function __set(string $name, string $value)
+    public function __set($name, $value)
     {
         $this->isDirty = true;
 
@@ -63,6 +63,16 @@ class RecordProxy extends Record
     }
 }
 
+echo '<br><br> Record <br>';
+$record = new Record(['name' => 'Audi']);
+$record->__set('name', 'Audi');
+$record->__get('name');
+
+
+echo '<br><br> RecordProxy <br>';
+$recordProxy = new RecordProxy(['name2' => 'Audi 2']);
+$recordProxy->__set('name3', 'Audi 3');
+echo $recordProxy->isDirty();
 
 
 

@@ -78,14 +78,14 @@ class Post
      * @param string $text
      * @param string $title
      */
-    public function __construct($id, string $title, string $text)
+    public function __construct($id, $title, $text)
     {
         $this->id = $id;
         $this->text = $text;
         $this->title = $title;
     }
 
-    public function setId(int $id)
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -141,9 +141,45 @@ class PostRepository
 }
 
 
+echo '<br><br> MemoryStorage <br>';
+$memoryStorage = new MemoryStorage();
 
+echo '<br> $memoryStorage->persist([1, 5, 2]) <br>';
+echo $memoryStorage->persist([1, 5, 2]);
 
+echo '<br> $memoryStorage->retrieve(5) <br>';
+echo $memoryStorage->retrieve(5);
 
+echo '<br><br> Post <br>';
+$post = new Post(1, 'Title 1', 'Text 1');
+
+echo '<br> Post::fromState([]) <br>';
+$arrayState = [
+    'id' => 1,
+    'title' => 'Title 1',
+    'text' => 'Text 1'
+];
+echo Post::fromState($arrayState);
+$post->setId(6);
+
+echo '<br> $post->getId() <br>';
+echo $post->getId();
+
+echo '<br> $post->getText() <br>';
+echo $post->getText();
+
+echo '<br> $post->getTitle() <br>';
+echo $post->getTitle();
+
+echo '<br><br> PostRepo <br>';
+$postRepo = new PostRepository($memoryStorage);
+
+echo $postRepo->findById(1);
+
+echo '<br> $postRepo->save($post) <br>';
+$postRepo->save($post);
+
+echo '<br><br>  <br>';
 
 
 
