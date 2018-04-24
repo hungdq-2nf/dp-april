@@ -18,7 +18,7 @@ class MultiAlphaSort implements iSort
     // Sort index:
     private $_index;
 
-    function __construct($index, $order = 'ascending')
+    function __construct($index, $order = 'asc')
     {
         $this->_index = $index;
         $this->_order = $order;
@@ -28,7 +28,7 @@ class MultiAlphaSort implements iSort
     function sort(array $list)
     {
         // Change the algorithm to match the sort preference:
-        if ($this->_order == 'ascending') {
+        if ($this->_order == 'asc') {
             uasort($list, array($this, 'ascSort'));
         } else {
             uasort($list, array($this, 'descSort'));
@@ -57,7 +57,7 @@ class MultiNumberSort implements iSort
     // Sort index
     private $_index;
 
-    function __construct($index, $order = 'ascending')
+    function __construct($index, $order = 'asc')
     {
         $this->_index = $index;
         $this->_order = $order;
@@ -67,7 +67,7 @@ class MultiNumberSort implements iSort
     function sort(array $list)
     {
         // Thay đổi thuật toán phù hợp với thiết lập
-        if ($this->_order == 'ascending') {
+        if ($this->_order == 'asc') {
             uasort($list, array($this, 'ascSort'));
         } else {
             uasort($list, array($this, 'descSort'));
@@ -158,7 +158,8 @@ echo '<h2>Danh sách sắp xếp theo tên</h2>';
 $list->display();
 
 // Sắp xếp theo điểm
-$list->sort(new MultiNumberSort('grade', 'descending'));
+//$list->sort(new MultiNumberSort('grade', 'desc'));
+$list->sort(new MultiNumberSort('grade', 'asc'));
 echo '<h2>Danh sách sắp xếp theo điểm</h2>';
 $list->display();
 
