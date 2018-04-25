@@ -29,9 +29,9 @@ class MultiAlphaSort implements iSort
     {
         // Change the algorithm to match the sort preference:
         if ($this->_order == 'asc') {
-            uasort($list, array($this, 'ascSort'));
+            uasort($list, [$this, 'ascSort']);
         } else {
-            uasort($list, array($this, 'descSort'));
+            uasort($list, [$this, 'descSort']);
         }
         return $list;
     }
@@ -68,9 +68,9 @@ class MultiNumberSort implements iSort
     {
         // Thay đổi thuật toán phù hợp với thiết lập
         if ($this->_order == 'asc') {
-            uasort($list, array($this, 'ascSort'));
+            uasort($list, [$this, 'ascSort']);
         } else {
-            uasort($list, array($this, 'descSort'));
+            uasort($list, [$this, 'descSort']);
         }
         return $list;
     }
@@ -98,7 +98,7 @@ class MultiNumberSort implements iSort
 class StudentsList
 {
     // Danh sách sinh viên được sắp xếp
-    private $_students = array();
+    private $_students = [];
 
     function __construct($list)
     {
@@ -126,41 +126,41 @@ class StudentsList
 }
 
 // Tạo mảng sinh viên, mỗi sinh viên có cấu trúc:
-// studentID => array('first_name' => 'First Name', 'last_name' => 'Last Name', 'grade' => XX.X)
-$students = array(
-    2 => array(
+// studentID => ['first_name' => 'First Name', 'last_name' => 'Last Name', 'grade' => XX]
+$students = [
+    2 => [
         'first_name' => 'Hung',
         'last_name' => 'Audi',
         'grade' => 90
-    ),
-    5 => array(
+    ],
+    5 => [
         'first_name' => 'Vu',
         'last_name' => 'Lambo',
         'grade' => 80
-    ),
-    1 => array(
+    ],
+    1 => [
         'first_name' => 'Phu',
         'last_name' => 'Ferrari',
         'grade' => 60
-    ),
-);
+    ],
+];
 
 // Tạo đối tượng
 $list = new StudentsList($students);
 
 // Hiển thị mảng trước khi sắp xếp
-echo '<h2>Danh sách gốc</h2>';
+echo '<h4>Danh sách gốc</h4>';
 $list->display();
 
 // Sắp xếp theo tên
 $list->sort(new MultiAlphaSort('first_name'));
-echo '<h2>Danh sách sắp xếp theo tên</h2>';
+echo '<h4>Danh sách sắp xếp theo tên</h4>';
 $list->display();
 
 // Sắp xếp theo điểm
 //$list->sort(new MultiNumberSort('grade', 'desc'));
 $list->sort(new MultiNumberSort('grade', 'asc'));
-echo '<h2>Danh sách sắp xếp theo điểm</h2>';
+echo '<h4>Danh sách sắp xếp theo điểm</h4>';
 $list->display();
 
 // Xóa đối tượng

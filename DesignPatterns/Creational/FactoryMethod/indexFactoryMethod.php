@@ -52,7 +52,7 @@ class CarMercedes implements VehicleInterface
     public function addAMGTuning()
     {
         // do additional tuning here
-        echo 'add AMG Tuning here';
+        echo 'add AMG Tuning here <br>';
     }
 }
 
@@ -123,21 +123,25 @@ echo '<br> GermanFactory <br>';
 $germanFactory = new GermanFactory();
 
 echo '<br> germanFactory type cheap: <br>';
-//echo $germanFactory->create('cheap');
-//echo $germanFactory->create(FactoryMethod::CHEAP);
-//echo $germanFactory->create(0);
+echo '<pre>';
+print_r($germanFactory->create(FactoryMethod::CHEAP));
+echo '</pre>';
 
 echo '<br> germanFactory type fast: <br>';
-//echo $germanFactory->create('fast');
-
+echo '<pre>';
+print_r($germanFactory->create(FactoryMethod::FAST));
+echo '</pre>';
 
 echo '<br><br> ItalianFactory <br>';
 $italianFactory = new ItalianFactory();
 
 echo '<br> $italianFactory type cheap: <br>';
-//echo $italianFactory->create('cheap');
+echo '<pre>';
+print_r($italianFactory->create(FactoryMethod::CHEAP));
+echo '</pre>';
 
 echo '<br> $italianFactory type fast: <br>';
-//echo $italianFactory->create('fast');
-
+echo '<pre>';
+print_r($italianFactory->create(FactoryMethod::FAST));
+echo '</pre>';
 

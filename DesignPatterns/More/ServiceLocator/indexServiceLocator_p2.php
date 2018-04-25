@@ -21,6 +21,8 @@ class Mercedes implements Car {
 class Driver {
     private $car;
     public function __construct(ServiceLocatorInterface $locator, $carname) {
+//        echo 1;
+//        print_r($locator->get($carname));die;
         $this->car = $locator->get($carname);
     }
     public function drive() {
@@ -36,12 +38,12 @@ interface ServiceLocatorInterface {
     public function clear();
 }
 
-class ServiceLocator implements ServiceLocatorInterface {
+class ServiceLocator2 implements ServiceLocatorInterface {
     protected $services = array();
 
     public function set($name, $service) {
         if (!is_object($service)) {
-            throw new InvalidArgumentException( "Only objects can be registered with the locator.");
+            echo '<br> Only objects can be registered with the locator. <br>';
         }
         if (!in_array($service, $this->services, true)) {
             $this->services[$name] = $service;
@@ -51,7 +53,7 @@ class ServiceLocator implements ServiceLocatorInterface {
 
     public function get($name) {
         if (!isset($this->services[$name])) {
-            throw new RuntimeException( "The service $name has not been registered with the locator.");
+            return '<br> The service has not been registered with the locator. <br>';
         }
         return $this->services[$name];
     }
@@ -72,68 +74,84 @@ class ServiceLocator implements ServiceLocatorInterface {
         return $this;
     }
 }
+
 echo '<br> $mec->run() <br>';
 $mec = new Mercedes();
 echo $mec->run();
 
 echo '<br> $bmv->run() <br>';
-$bmv = new BMV();
+$bmv = new BMW();
 echo $bmv->run();
+
+$serviceLocator2 = new ServiceLocator2();
+$carname = 'BMW';
 
 echo '<br> $dirver1->drive() <br>';
 // Lái xe 1 thích lái Mercedes
-$driver1 = new Driver($mec);
-$dirver1->drive(); // Mẹc xà đí...!
+$driver1 = new Driver($serviceLocator2, $carname);
+//$driver1->drive(); // Mercedes !
 
 echo '<br> $dirver2->drive() <br>';
 // Lái xe 2 thích lái BMV
-$driver2 = new Driver($bmv);
-$dirver2->drive(); // Bi em ví...!
+$driver2 = new Driver($serviceLocator2, $carname);
+//$dirver2->drive(); // BMW !
 
 // Tạo ra cái gara
-$serviceLocator = new ServiceLocator();
+$serviceLocator = new ServiceLocator2();
 
-echo '<br> $serviceLocator->set(\'mec\', new Mercerdes()) <br>';
-$serviceLocator->set('mec', new Mercerdes());
+echo '<br> $serviceLocator->set(\'mec\', new Mercedes()) <br>';
+$serviceLocator->set('mec', new Mercedes());
 
 echo '<br> $serviceLocator->get(\'mec\') <br>';
-echo $serviceLocator->get('mec');
+echo '<pre>';
+print_r($serviceLocator->get('mec'));
+echo '</pre>';
 
 echo '<br> $serviceLocator->has(\'mec\') <br>';
-echo $serviceLocator->has('mec');
+echo '<pre>';
+print_r($serviceLocator->has('mec'));
+echo '</pre>';
 
 echo '<br> $serviceLocator->remove(\'mec\') <br>';
-echo $serviceLocator->remove('mec');
+echo '<pre>';
+print_r($serviceLocator->remove('mec'));
+echo '</pre>';
 
 echo '<br> $serviceLocator->clear() <br>';
-echo $serviceLocator->clear();
+echo '<pre>';
+print_r($serviceLocator->clear());
+echo '</pre>';
 
 
 echo '<br> $serviceLocator->set(\'bmv\', new BMV()) <br>';
-$serviceLocator->set('bmv', new BMV());
+echo '<pre>';
+print_r($serviceLocator->set('bmv', new BMW()));
+echo '</pre>';
 
 echo '<br> $serviceLocator->get(\'bmw\') <br>';
-echo $serviceLocator->get('bmw');
+echo '<pre>';
+print_r($serviceLocator->get('bmw'));
+echo '</pre>';
 
 echo '<br> $serviceLocator->has(\'bmw\') <br>';
-echo $serviceLocator->has('bmw');
+echo '<pre>';
+print_r($serviceLocator->has('bmw'));
+echo '</pre>';
 
 echo '<br> $serviceLocator->remove(\'bmw\') <br>';
-echo $serviceLocator->remove('bmw');
+echo '<pre>';
+print_r($serviceLocator->remove('bmw'));
+echo '</pre>';
 
 echo '<br> $serviceLocator->clear() <br>';
-echo $serviceLocator->clear();
-
+echo '<pre>';
+print_r($serviceLocator->clear());
+echo '</pre>';
 
 // Tạo ra ông lái xe và lấy xe Mercedes từ gara
 $driver = new Driver($serviceLocator, 'mec');
-$driver->drive(); // Mẹc xà đí...!
+//$driver->drive(); // Mẹc xà đí...!
 
-
-echo '<br><br>  <br>';
-
-
-echo '<br><br>  <br>';
 
 
 

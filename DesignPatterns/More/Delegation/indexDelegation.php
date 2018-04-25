@@ -35,13 +35,10 @@ class TeamLead
     }
 }
 
-echo '<br><br> TeamLead <br>';
+echo '<br> TeamLead <br>';
 $juniorDeveloper = new JuniorDeveloper();
 $teamLead = new TeamLead($juniorDeveloper);
 echo $teamLead->writeCode();
-
-
-echo '<br><br>  <br>';
 
 
 

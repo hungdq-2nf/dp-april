@@ -40,16 +40,6 @@ class Playlist
     }
 }
 
-$playlist = new Playlist();
-$playlist->addSong('http://allaravel/music/song_1.mp3', 'Song 1');
-$playlist->addSong('http://allaravel/music/song_2.mp3', 'Song 2');
-
-if ($externalRetrievedType == 'pls') {
-    $playlistContent = $playlist->getPLS();
-} else {
-    $playlistContent = $playlist->getM3U();
-}
-
 class newPlaylist
 {
     private $__songs;
@@ -58,7 +48,7 @@ class newPlaylist
     public function __construct($type)
     {
         $this->__songs = array();
-        $object = "{$type}Playlist";
+        $object = "{$type}PlaylistDelegate";
         $this->__typeObject = new $object;
     }
 
@@ -107,11 +97,22 @@ class plsPlaylistDelegate
     }
 }
 
+$playlist = new Playlist();
+$playlist->addSong('http://allaravel/music/song_1.mp3', 'Song 1');
+$playlist->addSong('http://allaravel/music/song_2.mp3', 'Song 2');
+
 $externalRetrievedType = 'pls';
 
 $playlist = new newPlaylist($externalRetrievedType);
+$playlist2 = new Playlist();
+
 $playlistContent = $playlist->getPlaylist();
 
+if ($externalRetrievedType == 'pls') {
+    $playlistContent = $playlist2->getPLS();
+} else {
+    $playlistContent = $playlist2->getM3U();
+}
 
 class Delegate
 {

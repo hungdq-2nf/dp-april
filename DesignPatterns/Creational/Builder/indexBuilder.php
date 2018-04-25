@@ -26,11 +26,6 @@ abstract class Vehicle
 
 class Car extends Vehicle
 {
-    public function setPart($key, $value)
-    {
-        echo 1;
-//        $this->data[$key] = $value;
-    }
 }
 
 class Truck extends Vehicle
@@ -72,7 +67,6 @@ class CarBuilder implements BuilderInterface
     public function addDoors()
     {
         $this->car->setPart('rightDoor', new Door());
-//        $this->car->setPart('rightDoor', 1);
         $this->car->setPart('leftDoor', new Door());
         $this->car->setPart('trunkLid', new Door());
     }
@@ -137,9 +131,6 @@ class TruckBuilder implements BuilderInterface
         $this->truck->setPart('wheel1', new Wheel());
         $this->truck->setPart('wheel2', new Wheel());
         $this->truck->setPart('wheel3', new Wheel());
-        $this->truck->setPart('wheel4', new Wheel());
-        $this->truck->setPart('wheel5', new Wheel());
-        $this->truck->setPart('wheel6', new Wheel());
     }
 
     public function createVehicle()
@@ -156,26 +147,30 @@ class TruckBuilder implements BuilderInterface
 
 echo '<br> CarBuilder <br>';
 $carBuilder = new CarBuilder();
+$carBuilder->createVehicle();
 $carBuilder->addDoors();
 $carBuilder->addEngine();
 $carBuilder->addWheel();
-$carBuilder->createVehicle();
 echo '$carBuilder->getVehicle(): <br>';
-echo $carBuilder->getVehicle();
+echo '<pre>';
+print_r($carBuilder->getVehicle());
+echo '</pre>';
 
-
-echo '<br><br> Director <br>';
+echo '<br> Director <br>';
 $director = new Director();
-echo $director->build();
+echo '<pre>';
+print_r($director->build($carBuilder));
+echo '</pre>';
 
-
-echo '<br><br> TruckBuilder <br>';
+echo '<br> TruckBuilder <br>';
 $truckBuilder = new TruckBuilder();
+$truckBuilder->createVehicle();
 $truckBuilder->addDoors();
 $truckBuilder->addEngine();
 $truckBuilder->addWheel();
-$truckBuilder->createVehicle();
 echo '$truckBuilder->getVehicle(): <br>';
-echo $truckBuilder->getVehicle();
+echo '<pre>';
+print_r($truckBuilder->getVehicle());
+echo '</pre>';
 
 

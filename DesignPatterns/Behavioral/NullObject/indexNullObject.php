@@ -8,22 +8,23 @@ echo '---- Behavioral > Null Object <br><br>';
 
 interface LoggerInterface
 {
-    public function log(string $str);
+    public function log($str);
 }
 
 class NullLogger implements LoggerInterface
 {
-    public function log(string $str)
+    public function log($str)
     {
         // do nothing
+        echo 'null log: ' . $str . '<br>';
     }
 }
 
 class PrintLogger implements LoggerInterface
 {
-    public function log(string $str)
+    public function log($str)
     {
-        echo $str;
+        echo 'print log: ' . $str.'<br>';
     }
 }
 
@@ -38,14 +39,19 @@ class Service
 
     public function doSomething()
     {
+        echo 'service<br>';
         // notice here that you don't have to check if the logger is set with eg. is_null(), instead just use it
-        $this->logger->log('We are in '.__METHOD__);
+        $this->logger->log('We are in class '.__METHOD__);
     }
 }
 
-$service = new Service();
-$service->doSomething();
+$nullLogger = new NullLogger();
+$printLogger = new PrintLogger();
 
+$serviceNullLogger = new Service($nullLogger);
+$serviceNullLogger->doSomething();
 
+$servicePrintLogger = new Service($printLogger);
+$servicePrintLogger->doSomething();
 
 

@@ -99,7 +99,7 @@ class ServiceLocator
     }
 }
 
-echo '<br><br> ServiceLocator <br>';
+echo ' ServiceLocator <br>';
 $objectService = 0;
 $serviceLocator = new ServiceLocator();
 $serviceLocator->addInstance('class', (object)$objectService, true);
@@ -111,7 +111,9 @@ echo '<br><br> $serviceLocator->has(\'interface\') <br>';
 echo $serviceLocator->has('interface');
 
 echo '<br><br> $serviceLocator->get(\'class 3\') <br>';
-echo $serviceLocator->get('class 3');
+echo '<pre>';
+print_r($serviceLocator->get('class'));
+echo '</pre>';
 
 
 
