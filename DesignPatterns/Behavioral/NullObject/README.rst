@@ -1,22 +1,27 @@
 `Null Object`__
+Đối tượng null
 ===============
 
 Purpose
 -------
 
-NullObject is not a GoF design pattern but a schema which appears
-frequently enough to be considered a pattern. It has the following
-benefits:
-
+NullObject is not a GoF design pattern but a schema which appears frequently enough to be considered a pattern. It has the following benefits:
 -  Client code is simplified
 -  Reduces the chance of null pointer exceptions
 -  Fewer conditionals require less test cases
 
-Methods that return an object or null should instead return an object or
-``NullObject``. ``NullObject``\ s simplify boilerplate code such as
-``if (!is_null($obj)) { $obj->callSomething(); }`` to just
-``$obj->callSomething();`` by eliminating the conditional check in
-client code.
+Methods that return an object or null should instead return an object or ``NullObject``. ``NullObject``\ s simplify boilerplate code such as ``if (!is_null($obj)) { $obj->callSomething(); }`` to just ``$obj->callSomething();`` by eliminating the conditional check in client code.
+_
+NullObject không phải là một mẫu thiết kế GoF nhưng một lược đồ xuất hiện thường xuyên đủ để được coi là một mẫu. Nó có những lợi ích sau:
+- Client code được đơn giản hóa
+- Giảm cơ hội ngoại lệ con trỏ null
+- Ít điều kiện hơn yêu cầu ít trường hợp kiểm tra hơn
+
+Các phương thức trả về một obj hoặc null thay vì trả về một obj hoặc ``NullObject``. ``NullObject`` \ s đơn giản hóa mã soạn sẵn như
+``if (! Is_null ($ obj)) {$ obj-> callSomething (); }``
+để chỉ
+``$ obj-> callSomething ();``
+bằng cách loại bỏ kiểm tra có điều kiện trong client code.
 
 Examples
 --------

@@ -18,18 +18,18 @@ class Registry2
     }
 }
 
-// Tạo ra đối tượng kết nối database và đối tượng registry
+// Tạo ra obj kết nối database và obj registry
 //$db = new DatabaseConnection();
 //$registry = new Registry();
 //
-//// Đưa đối tượng $db vào danh bạ
+//// Đưa obj $db vào danh bạ
 //$registry->add("database", $db);
 //
-//// Sử dụng $registry
+//// Dùng $registry
 //$user = new User($registry);
 //$admin = new Admin($registry);
 //
-//// Hoặc có thể lấy đối tượng $db để thực hiện các công việc khác
+//// Hoặc có thể lấy obj $db để thực hiện các công việc khác
 //$databaseObj = $registry->get("database");
 //$databaseObj->query("SELECT username FROM users" . " WHERE id=$userId");
 

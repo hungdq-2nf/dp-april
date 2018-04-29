@@ -1,20 +1,22 @@
 `Adapter / Wrapper`__
+Bộ chuyển đổi / Vỏ bọc
 =====================
 
 Purpose
 -------
 
-To translate one interface for a class into a compatible interface. An
-adapter allows classes to work together that normally could not because
-of incompatible interfaces by providing its interface to clients while
-using the original interface.
+To translate one interface for a class into a compatible interface. An adapter allows classes to work together that normally could not because of incompatible interfaces by providing its interface to clients while using the original interface.
+_
+Để dịch một interface cho một lớp thành một interface tương thích. Một adapter cho phép các lớp làm việc cùng nhau mà bình thường thì không thể vì các interface không tương thích bằng cách cung cấp interface của nó cho các client trong khi dùng interface gốc.
 
 Examples
 --------
 
 -  DB Client libraries adapter
--  using multiple different webservices and adapters normalize data so
-   that the outcome is the same for all
+-  using multiple different webservices and adapters normalize data so that the outcome is the same for all
+_
+- Bộ chuyển đổi thư viện Client DB
+- Dùng nhiều webservices và adapters khác nhau để chuẩn hóa dữ liệu để kết quả giống nhau cho tất cả
 
 UML Diagram
 -----------

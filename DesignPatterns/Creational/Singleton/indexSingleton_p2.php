@@ -48,7 +48,7 @@ class Config
     }
 }
 
-// Tạo một đối tượng Config
+// Tạo một obj Config
 $config = Config::getInstance();
 
 // Thiết lập các giá trị trong thuộc tính cấu hình
@@ -57,11 +57,11 @@ $config->set('database_connected', 'true');
 // In giá trị cấu hình
 echo '<p>$config["database_connected"]: ' . $config->get('database_connected') . '</p>';
 
-// Tạo một đối tượng thứ hai
+// Tạo một obj thứ hai
 $test = Config::getInstance();
 echo '<p>$test["database_connected"]: ' . $test->get('database_connected') . '</p>';
 
-// Xóa các đối tượng sau khi sử dụng
+// Xóa các obj sau khi dùng
 //unset($config, $test);
 
 

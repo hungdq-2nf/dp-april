@@ -1,13 +1,13 @@
 `Abstract Factory`__
+Nhà máy trừu tượng
 ====================
 
 Purpose
 -------
 
-To create series of related or dependent objects without specifying
-their concrete classes. Usually the created classes all implement the
-same interface. The client of the abstract factory does not care about
-how these objects are created, he just knows how they go together.
+To create series of related or dependent objects without specifying their concrete classes. Usually the created classes all implement the same interface. The client of the abstract factory does not care about how these objects are created, he just knows how they go together.
+_
+Để tạo chuỗi các obj liên quan hoặc phụ thuộc mà không chỉ định các lớp cụ thể của chúng. Thông thường các lớp được tạo ra đều thực hiện cùng một interface. Client của abstract factory không quan tâm đến cách các obj này được tạo ra, anh ta chỉ biết cách chúng đi cùng nhau.
 
 UML Diagram
 -----------

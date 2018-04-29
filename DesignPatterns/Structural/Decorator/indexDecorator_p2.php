@@ -83,7 +83,7 @@ class GPSNavigation extends CarFeature
 // Tạo ra một xe cơ bản chưa có tùy chọn
 $basicCar = new Suv();
 
-// Truyền đối tượng này vào class mới thêm tùy chọn
+// Truyền obj này vào class mới thêm tùy chọn
 $carWithSunRoof = new SunRoof($basicCar);
 
 // Kiểm tra các tính năng trên xe đã có tùy chọn

@@ -84,7 +84,7 @@ class productOrderFacade {
     }
 }
 
-//Như vậy chúng ta đã có một class ProductOrder dạng Facade, chúng ta sẽ sử dụng nó ở những chỗ cần phát sinh đơn hàng:
+//Như vậy chúng ta đã có một class ProductOrder dạng Facade, chúng ta sẽ dùng nó ở những chỗ cần phát sinh đơn hàng:
 
 $productID = 1;//$_GET['productId'];
 

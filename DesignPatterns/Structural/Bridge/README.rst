@@ -1,11 +1,13 @@
 `Bridge`__
+Cầu nối
 ==========
 
 Purpose
 -------
 
-Decouple an abstraction from its implementation so that the two can vary
-independently.
+Decouple an abstraction from its implementation so that the two can vary independently.
+_
+Tách một sự trừu tượng từ việc thực hiện nên hai cái có thể khác nhau một cách độc lập.
 
 Examples
 --------

@@ -1,17 +1,20 @@
 `Prototype`__
+khuôn mẫu (tạo obj mới từ việc sao chép mẫu obj cũ)
 =============
 
 Purpose
 -------
 
-To avoid the cost of creating objects the standard way (new Foo()) and
-instead create a prototype and clone it.
+To avoid the cost of creating objects the standard way (new Foo()) and instead create a prototype and clone it.
+_
+Để tránh chi phí của việc tạo ra các obj theo cách tiêu chuẩn (new Foo ()) và thay vào đó tạo ra một nguyên mẫu và sao chép nó.
 
 Examples
 --------
 
--  Large amounts of data (e.g. create 1,000,000 rows in a database at
-   once via a ORM).
+-  Large amounts of data (e.g. create 1,000,000 rows in a database at once via a ORM).
+_
+- Số lượng lớn dữ liệu (ví dụ: tạo 1.000.000 hàng trong cơ sở dữ liệu cùng một lúc thông qua ORM).
 
 UML Diagram
 -----------

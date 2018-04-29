@@ -1,19 +1,19 @@
 `Builder`__
+Thợ xây
 ===========
 
 Purpose
 -------
 
 Builder is an interface that build parts of a complex object.
-
-Sometimes, if the builder has a better knowledge of what it builds, this
-interface could be an abstract class with default methods (aka adapter).
-
-If you have a complex inheritance tree for objects, it is logical to
-have a complex inheritance tree for builders too.
-
-Note: Builders have often a fluent interface, see the mock builder of
-PHPUnit for example.
+Sometimes, if the builder has a better knowledge of what it builds, this interface could be an abstract class with default methods (aka adapter).
+If you have a complex inheritance tree for objects, it is logical to have a complex inheritance tree for builders too.
+Note: Builders have often a fluent interface, see the mock builder of PHPUnit for example.
+_
+Builder là một interface xây dựng các phần của một obj phức tạp.
+Đôi khi, nếu builder có kiến thức tốt hơn về những gì nó xây dựng, interface này có thể là một abstract class với các methods mặc định (còn gọi là adapter).
+Nếu bạn có một cây thừa kế phức tạp cho các obj, nó là hợp lý để có một cây thừa kế phức tạp cho builders.
+Lưu ý: Builders thường có interface thông thạo, xem ví dụ về trình xây dựng giả lập của PHPUnit.
 
 Examples
 --------

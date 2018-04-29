@@ -85,15 +85,15 @@
 <br><br>
 
 * Creational:
-các mẫu này chuyên sử dụng cho khởi tạo đối tượng.
+các mẫu này chuyên dùng cho khởi tạo obj.
 
 <br><br>
 
-* Structural: các mẫu liên quan đến cấu trúc, kết cấu các đối tượng.
+* Structural: các mẫu liên quan đến cấu trúc, kết cấu các obj.
 
 <br><br>
 
-* Behavioral: các mẫu giải quyết các vấn đề về hành vi đối tượng.
+* Behavioral: các mẫu giải quyết các vấn đề về hành vi obj.
 
 
 
