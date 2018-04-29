@@ -48,7 +48,7 @@
         <td><a href="Creational/Prototype">Prototype</a></td>
         <td><a href="Structural/Composite">Composite</a></td>
         <td><a href="Behavioral/Observer">Observer</a></td>
-        <td></td>
+        <td><a href="More/ServiceLocator">ServiceLocator</a></td>
     </tr>
     <tr>
         <td><a href="Creational/Singleton">Singleton</a></td>

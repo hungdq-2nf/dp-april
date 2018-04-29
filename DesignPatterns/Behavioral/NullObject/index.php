@@ -5,7 +5,7 @@ require 'indexNullObject.php';
 
 
 
-echo '<br><br> _p2:';
+echo '<br> _p2:<br>';
 require 'indexNullObject_p2.php';
 
 

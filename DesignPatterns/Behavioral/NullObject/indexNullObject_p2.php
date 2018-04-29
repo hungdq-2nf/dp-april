@@ -34,10 +34,12 @@ class User implements UserInterface
     public function setId($id)
     {
         if ($this->id !== null) {
-            throw new BadMethodCallException("ID của người dùng rỗng!");
+            echo 'ID của người dùng rỗng!';
         }
-        if (!is_int($id) || $id < 1) {
-            throw new InvalidArgumentException("ID của người dùng sai định dạng.");
+        if (!is_int($id)
+            || $id < 1
+        ) {
+            echo '<br>ID của người dùng sai định dạng.<br>';
         }
         $this->id = $id;
         return $this;
@@ -50,8 +52,10 @@ class User implements UserInterface
 
     public function setName($name)
     {
-        if (strlen($name) < 10 || strlen($name) > 30) {
-            throw new InvalidArgumentException("Tên người dùng phải có độ dài lớn hơn 10 và nhỏ hơn 30.");
+        if (strlen($name) < 10
+            || strlen($name) > 30
+        ) {
+            echo '<br>Tên người dùng phải có độ dài lớn hơn 10 và nhỏ hơn 30.<br>';
         }
         $this->name = $name;
         return $this;
@@ -65,7 +69,7 @@ class User implements UserInterface
     public function setEmail($email)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException("Sai định dạng email.");
+            echo '<br>Sai định dạng email.<br>';
         }
         $this->email = $email;
         return $this;
@@ -111,6 +115,65 @@ class NullUser implements UserInterface
 
 //Như vậy chúng ta có thể trả về một NullUser khi tạo người dùng mà các thông số nhập vào là null.
 
+//function createUser($row)
+//{
+//    if (!$row) {
+//        return new NullUser;
+//    }
+//    $user = new User($row["name"], $row["email"]);
+//    $user->setId($row["id"]);
+//    return $user;
+//}
+
+//Nếu không sử dụng NullUser mỗi khi gọi các phương thức của User chúng ta cần kiểm tra xem có null hay không?
+
+// Lấy người dùng có ID bằng 1 trong hệ thống
+//$user = $userMapper->fetchById(1);
+//
+//if ($user !== null) {
+//    echo $user->getName() . " " . $user->getEmail();
+//}
+
+//Sử dụng NullUser chúng ta không cần phải kiểm tra mỗi khi có các thao tác với class User:
+//$user = $userMapper->fetchById("ID phải là số, nhập chữ xem sao...");
+
+//echo $user->getName() . " " . $user->getEmail();
+
+$name = 'name 00000001';
+$email = 'a1@gmail.com';
+$id = 1;
+
+echo '<br> - User';
+$user = new User($name, $email);
+
+$user->setId($id);
+echo '<br> $user->getId()<br>';
+echo $user->getId();
+
+$user->setName($name);
+echo '<br> $user->getName()<br>';
+echo $user->getName();
+
+$user->setEmail($email);
+echo '<br> $user->getEmail()<br>';
+echo $user->getEmail();
+
+
+echo '<br><br> -NullUser';
+$nullUser = new NullUser();
+
+$nullUser->setId($id);
+echo '<br> $nullUser->getId()<br>';
+echo $nullUser->getId();
+
+$nullUser->setName($name);
+echo '<br> $nullUser->getName()<br>';
+echo $nullUser->getName();
+
+$nullUser->setEmail($email);
+echo '<br> $nullUser->getEmail()<br>';
+echo $nullUser->getEmail();
+
 function createUser($row)
 {
     if (!$row) {
@@ -121,16 +184,18 @@ function createUser($row)
     return $user;
 }
 
-//Nếu không sử dụng NullUser mỗi khi gọi các phương thức của User chúng ta cần kiểm tra xem có null hay không?
+echo '<br><br>- User ok';
+$row = [
+    'id' => 2,
+    'name' => 'name 00000002',
+    'email' => 'a2@gmail.com'
+];
+echo '<pre>';
+print_r(createUser($row));
+echo '</pre>';
 
-// Lấy người dùng có ID bằng 1 trong hệ thống
-$user = $userMapper->fetchById(1);
-
-if ($user !== null) {
-    echo $user->getName() . " " . $user->getEmail();
-}
-
-//Sử dụng NullUser chúng ta không cần phải kiểm tra mỗi khi có các thao tác với class User:
-$user = $userMapper->fetchById("ID phải là số, nhập chữ xem sao...");
-
-echo $user->getName() . " " . $user->getEmail();
+echo '- NullUser';
+$rowNull = [];
+echo '<pre>';
+print_r(createUser($rowNull));
+echo '</pre>';

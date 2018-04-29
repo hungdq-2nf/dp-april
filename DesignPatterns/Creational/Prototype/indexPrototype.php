@@ -56,7 +56,9 @@ class FooBookPrototype extends BookPrototype
 }
 
 echo '<br><br>  <br>';
-
+$barBookPrototype = new BarBookPrototype();
+$barBookPrototype->setTitle('title 1');
+$barBookPrototype->getTitle();
 
 echo '<br><br>  <br>';
 

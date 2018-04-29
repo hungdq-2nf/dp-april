@@ -18,7 +18,7 @@ class Book
      */
     private $title;
 
-    public function __construct(string $title, string $author)
+    public function __construct($title, $author)
     {
         $this->author = $author;
         $this->title = $title;
@@ -93,31 +93,43 @@ class BookList implements \Countable, \Iterator
     }
 }
 
-$book = new Book();
+$title1 = 'title 1';
+$author1 = 'author 1';
+$book1 = new Book($title1, $author1);
+
+$title2 = 'title 1';
+$author2 = 'author 1';
+$book2 = new Book($title2, $author2);
+
 $bookList = new BookList();
 
-echo 'addBook() <br>';
-echo $bookList->addBook($book);
+echo 'addBook() 1<br>';
+echo $bookList->addBook($book1);
 
-echo '<br><br> removeBook() <br>';
-echo $bookList->removeBook($book);
+echo '<br><br> removeBook() 1<br>';
+echo $bookList->removeBook($book1);
 
-echo '<br><br> count() <br>';
+echo 'addBook() 2<br>';
+echo $bookList->addBook($book2);
+
+echo '<br> count() <br>';
 echo $bookList->count();
 
 echo '<br><br> current() <br>';
-echo $bookList->current();
+echo '<pre>';
+print_r($bookList->current());
+echo '</pre>';
 
-echo '<br><br> key() <br>';
+echo '<br> key() <br>';
 echo $bookList->key();
 
-echo '<br><br> next() <br>';
+echo '<br> next() <br>';
 echo $bookList->next();
 
-echo '<br><br> rewind() <br>';
+echo '<br> rewind() <br>';
 echo $bookList->rewind();
 
-echo '<br><br> valid() <br>';
+echo '<br> valid() <br>';
 echo $bookList->valid();
 
 

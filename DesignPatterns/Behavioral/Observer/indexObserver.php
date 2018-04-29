@@ -33,7 +33,7 @@ class User implements \SplSubject
         $this->observers->detach($observer);
     }
 
-    public function changeEmail(string $email)
+    public function changeEmail($email)
     {
         $this->email = $email;
         $this->notify();
@@ -75,22 +75,29 @@ class UserObserver implements \SplObserver
 }
 
 $user = new User();
-echo '<br><br> user->attach() <br>';
-echo $user->attach();
+$userObserver = new UserObserver();
 
-echo '<br><br> user->detach() <br>';
-echo $user->detach();
+echo '<br>- $user <br>';
 
-echo '<br><br> user->changeEmail("audi@gmail.com") <br>';
+echo '<br> user->attach($userObserver) <br>';
+echo $user->attach($userObserver);
+
+echo '<br> user->detach() <br>';
+echo $user->detach($userObserver);
+
+echo '<br> user->changeEmail("audi@gmail.com") <br>';
 echo $user->changeEmail("audi@gmail.com");
 
-echo '<br><br> user->notify() <br>';
+echo '<br> user->notify() <br>';
 echo $user->notify();
 
-$userObserver = new UserObserver();
-echo '<br><br> user->update() <br>';
-echo $userObserver->update();
+echo '<br>- $userObserver <br>';
 
-echo '<br><br> user->getChangedUsers() <br>';
-echo $userObserver->getChangedUsers();
+echo '<br> $userObserver->update($user) <br>';
+echo $userObserver->update($user);
+
+echo '<br> $userObserver->getChangedUsers() <br>';
+echo '<pre>';
+print_r($userObserver->getChangedUsers());
+echo '</pre>';
 

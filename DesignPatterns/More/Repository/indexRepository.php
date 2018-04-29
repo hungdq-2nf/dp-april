@@ -16,7 +16,7 @@ class MemoryStorage
     /**
      * @var int
      */
-    private $lastId = 0;
+    var $lastId = 0;
 
     public function persist(array $data)
     {
@@ -28,16 +28,15 @@ class MemoryStorage
         return $this->lastId;
     }
 
-    public function retrieve(int $id)
+    public function retrieve($id)
     {
         if (!isset($this->data[$id])) {
-            throw new \OutOfRangeException(sprintf('No data found for ID %d', $id));
+            echo '<br> No data found for ID <br>';
         }
-
         return $this->data[$id];
     }
 
-    public function delete(int $id)
+    public function delete($id)
     {
         if (!isset($this->data[$id])) {
             throw new \OutOfRangeException(sprintf('No data found for ID %d', $id));
@@ -118,12 +117,12 @@ class PostRepository
         $this->persistence = $persistence;
     }
 
-    public function findById(int $id)
+    public function findById($id)
     {
         $arrayData = $this->persistence->retrieve($id);
 
         if (is_null($arrayData)) {
-            throw new \InvalidArgumentException(sprintf('Post with ID %d does not exist', $id));
+            echo '<br> Post with ID does not exist <br>';
         }
 
         return Post::fromState($arrayData);
@@ -140,27 +139,38 @@ class PostRepository
     }
 }
 
-
-echo '<br><br> MemoryStorage <br>';
-$memoryStorage = new MemoryStorage();
-
-echo '<br> $memoryStorage->persist([1, 5, 2]) <br>';
-echo $memoryStorage->persist([1, 5, 2]);
-
-echo '<br> $memoryStorage->retrieve(5) <br>';
-echo $memoryStorage->retrieve(5);
-
-echo '<br><br> Post <br>';
-$post = new Post(1, 'Title 1', 'Text 1');
-
-echo '<br> Post::fromState([]) <br>';
-$arrayState = [
+$data = [
     'id' => 1,
     'title' => 'Title 1',
     'text' => 'Text 1'
 ];
-echo Post::fromState($arrayState);
-$post->setId(6);
+
+echo 'MemoryStorage <br>';
+$memoryStorage = new MemoryStorage();
+$idRetrieve = $memoryStorage->lastId;
+$idRetrieve++;
+
+echo '<br> $memoryStorage->persist($data) <br>';
+echo $memoryStorage->persist($data);
+
+echo '<br> $memoryStorage->retrieve(1) <br>';
+echo '<pre>';
+print_r($memoryStorage->retrieve($idRetrieve));
+echo '</pre>';
+
+echo 'Post <br>';
+$post = new Post(2, 'Title 2', 'Text 2');
+
+echo '<br> Post::fromState($arrayState) <br>';
+$arrayState = [
+    'id' => 3,
+    'title' => 'Title 3',
+    'text' => 'Text 3'
+];
+echo '<pre>';
+print_r(Post::fromState($arrayState));
+echo '</pre>';
+$post->setId(2);
 
 echo '<br> $post->getId() <br>';
 echo $post->getId();
@@ -174,7 +184,9 @@ echo $post->getTitle();
 echo '<br><br> PostRepo <br>';
 $postRepo = new PostRepository($memoryStorage);
 
-echo $postRepo->findById(1);
+echo '<pre>';
+print_r($postRepo->findById($idRetrieve));
+echo '</pre>';
 
 echo '<br> $postRepo->save($post) <br>';
 $postRepo->save($post);
