@@ -15,6 +15,21 @@ _
 Mẫu này là DP "real" bởi vì nó đạt được "Dependency Inversion Principle" gọi là "D" trong nguyên tắc S.O.L.I.D.
 Nó có nghĩa là lớp FactoryMethod phụ thuộc vào trừu tượng hóa, không phụ thuộc vào các lớp cụ thể. Đây là thủ thuật thực sự so với SimpleFactory hoặc StaticFactory.
 
+
+Examples
+--------
+
+The Factory Method defines an interface for creating objects, but lets subclasses decide which classes to instantiate.
+Injection molding presses demonstrate this pattern.
+Manufacturers of plastic toys process plastic molding powder, and inject the plastic into molds of the desired shapes.
+The class of toy (car, action figure, etc.) is determined by the mold.
+_
+Method Factory định nghĩa một giao diện để tạo các đối tượng, nhưng cho phép các lớp con quyết định lớp nào sẽ khởi tạo.
+Ép phun ép chứng minh mô hình này.
+Các nhà sản xuất đồ chơi bằng nhựa xử lý bột nhựa đúc, và tiêm nhựa vào khuôn mẫu của các hình dạng mong muốn.
+Lớp của đồ chơi (ô tô, con số hành động, vv) được xác định bởi khuôn.
+
+
 UML Diagram
 -----------
 

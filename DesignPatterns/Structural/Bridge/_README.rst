@@ -15,6 +15,14 @@ Examples
 -  `Symfony
    DoctrineBridge <https://github.com/symfony/DoctrineBridge>`__
 
+--
+The Client doesn't want to deal with platform-dependent details. The Bridge pattern encapsulates this complexity behind an abstraction "wrapper".
+Bridge emphasizes identifying and decoupling "interface" abstraction from "implementation" abstraction.
+_
+Khách hàng không muốn xử lý các chi tiết phụ thuộc vào nền tảng. Các mô hình cầu đóng gói phức tạp này đằng sau một wrapper "trừu tượng".
+Bridge nhấn mạnh việc xác định và tách rời giao diện "trừu tượng" khỏi sự trừu tượng "triển khai".
+
+
 UML Diagram
 -----------
 

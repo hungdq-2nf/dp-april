@@ -127,6 +127,7 @@ $taylor     = new Employee('Taylor Otwell');
 $fontend->add($kulit);
 $fontend->add($evan);
 $fontend->add($taylor);
+echo $fontend->getCount();
 
 // Gán các tác vụ cho nhóm và nhân viên
 $fontend->assignTask('Xây dựng website');

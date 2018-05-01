@@ -16,6 +16,20 @@ Examples
 _
 một hệ thống hàng đợi tin nhắn được quan sát để hiển thị tiến độ của một công việc trong một GUI
 
+--
+The Observer defines a one-to-many relationship so that when one object changes state, the others are notified and updated automatically.
+Some auctions demonstrate this pattern.
+Each bidder possesses a numbered paddle that is used to indicate a bid.
+The auctioneer starts the bidding, and "observes" when a paddle is raised to accept the bid.
+The acceptance of the bid changes the bid price which is broadcast to all of the bidders in the form of a new bid.
+_
+Observer định nghĩa một mối quan hệ một-nhiều để khi một đối tượng thay đổi trạng thái, các đối tượng khác được thông báo và cập nhật tự động.
+Một số phiên đấu giá thể hiện mô hình này.
+Mỗi nhà thầu có một mái chèo được đánh số được sử dụng để biểu thị giá thầu.
+Người đấu giá bắt đầu đặt giá thầu và "quan sát" khi một mái chèo được nâng lên để chấp nhận giá thầu.
+Việc chấp nhận giá thầu thay đổi giá dự thầu được phát cho tất cả các nhà thầu dưới hình thức một giá thầu mới.
+
+
 Note
 ----
 

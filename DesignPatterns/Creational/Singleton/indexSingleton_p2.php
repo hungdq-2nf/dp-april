@@ -64,9 +64,3 @@ echo '<p>$test["database_connected"]: ' . $test->get('database_connected') . '</
 // Xóa các obj sau khi dùng
 //unset($config, $test);
 
-
-echo '<br><br>  <br>';
-
-
-echo '<br><br>  <br>';
-

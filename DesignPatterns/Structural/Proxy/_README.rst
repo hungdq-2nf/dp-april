@@ -16,6 +16,11 @@ Examples
 _
 - Doctrine2 dùng proxy để triển khai khung ma thuật (ví dụ: khởi tạo lười) trong khi người dùng vẫn làm việc với các lớp thực thể của riêng mình và sẽ không bao giờ dùng cũng như không chạm vào proxy
 
+--
+The Proxy provides a surrogate or place holder to provide access to an object. A check or bank draft is a proxy for funds in an account. A check can be used in place of cash for making purchases and ultimately controls access to cash in the issuer's account.
+_
+Proxy cung cấp người đại diện hoặc người giữ chỗ để cung cấp quyền truy cập vào một đối tượng. Séc hoặc hối phiếu ngân hàng là ủy quyền cho tiền trong tài khoản. Séc có thể được sử dụng thay cho tiền mặt để mua hàng và cuối cùng kiểm soát quyền truy cập vào tiền mặt trong tài khoản của nhà phát hành.
+
 UML Diagram
 -----------
 

@@ -39,25 +39,25 @@
         <td><a href="More/Delegation">Delegation</a></td>
     </tr>
     <tr>
-        <td><a href="Creational/FactoryMethod">FactoryMethod</a></td>
+        <td><a href="Creational/Builder">Builder</a></td>
         <td><a href="Structural/Bridge">Bridge</a></td>
         <td><a href="Behavioral/NullObject">NullObject</a></td>
         <td><a href="More/Repository">Repository</a></td>
     </tr>
     <tr>
-        <td><a href="Creational/Prototype">Prototype</a></td>
+        <td><a href="Creational/FactoryMethod">FactoryMethod</a></td>
         <td><a href="Structural/Composite">Composite</a></td>
         <td><a href="Behavioral/Observer">Observer</a></td>
         <td><a href="More/ServiceLocator">ServiceLocator</a></td>
     </tr>
     <tr>
-        <td><a href="Creational/Singleton">Singleton</a></td>
+        <td><a href="Creational/Prototype">Prototype</a></td>
         <td><a href="Structural/Decorator">Decorator</a></td>
         <td><a href="Behavioral/State">State</a></td>
         <td></td>
     </tr>
     <tr>
-        <td><a href="Creational/Builder">Builder</a></td>
+        <td><a href="Creational/Singleton">Singleton</a></td>
         <td><a href="Structural/DependencyInjection">DependencyInjection</a></td>
         <td><a href="Behavioral/Strategy">Strategy</a></td>
         <td></td>

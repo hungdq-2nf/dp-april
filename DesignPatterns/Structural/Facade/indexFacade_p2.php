@@ -1,24 +1,20 @@
 <?php
-//Chúng ta cùng xem ví dụ về các đoạn code dùng để chia sẻ lên các mạng xã hội như Facebook, Google Plus, Twiter…
 
-// Class share gì đó lên Facebook
-class Facebook {
+class fb {
     function share($status, $url) {
-        echo 'Facebook: ' . $status . ' from:' . $url . '<br>';
+        echo 'FB: ' . $status . ' from:' . $url . '<br>';
     }
 }
 
-// Class share gì đó lên Google+.
-class Google {
+class gg {
     function share($url) {
-        echo 'Google+: ' . $url . '<br>';
+        echo 'GG: ' . $url . '<br>';
     }
 }
 
-// Class tweet lên Twitter
-class Twitter {
+class tw {
     function tweet($url, $title) {
-        echo 'Tweet: ' . $url . ', title:' . $title . '<br>';
+        echo 'TW: ' . $url . ', title:' . $title . '<br>';
     }
 }
 
@@ -29,52 +25,63 @@ class Twitter {
 //Để làm được việc này, Facade dùng một class ShareFacade và các class ở trên được truyền vào tham số của phương thức khởi tạo:
 
 class ShareFacade {
-    protected $facebook;
-    protected $googleplus;
-    protected $twitter;
+    protected $fb;
+    protected $gg;
+    protected $tw;
 
     // Các obj được truyền vào phương thức khởi tạo
-    function __construct($facebookObj,$googleObj,$twitterObj) {
-        $this->facebook= $facebookObj;
-        $this->googleplus= $googleObj;
-        $this->twitter= $twitterObj;
+    function __construct($fbObj, $ggObj, $twObj) {
+        $this->fb = $fbObj;
+        $this->gg = $ggObj;
+        $this->tw = $twObj;
     }
 
     // Phương thức này thực hiện tất cả các yêu cầu chia sẻ lên mạng xã hội
-    function share($url,$title,$status) {
-        $this->facebook->share($status, $url);
-        $this->googleplus->share($url);
-        $this->twitter->tweet($url, $title);
+    function share($url, $title, $status) {
+        $this->fb->share($status, $url);
+        $this->gg->share($url);
+        $this->tw->tweet($url, $title);
     }
 }
 
 //Với việc nhóm các phương thức của các class vào class ShareFacade, mỗi khi cần thực hiện chia sẻ lên các mạng xã hội chúng ta chỉ đơn giản thực hiện như sau:
 
 // Tạo obj
-$facebookObj = new Facebook();
-$googleplusObj   = new Google();
-$twitterObj  = new Twitter();
+$fbObj = new fb();
+$ggObj = new gg();
+$twObj = new tw();
 
 // Truyền các obj này cho ShareFacade
-$shareObj = new ShareFacade($facebookObj, $googleplusObj, $twitterObj);
+$shareObj = new ShareFacade($fbObj, $ggObj, $twObj);
 
 // Gọi một phương thức để chia sẻ tất cả lên mạng xã hội
-$shareObj->share('url 1', 'Title 1', 'Status 1');
+$url1 = 'Url 1';
+$title1 = 'Title 1';
+$status1 = 'Status 1';
+$shareObj->share($url1, $title1, $status1);
 
 //Ví dụ trên đã cho thấy thay vì chúng ta phải gọi 3 phương thức để chia sẻ nội dung lên mạng xã hội thì tất cả đã được gói vào trong một phương thức duy nhất. Như vậy việc viết code trở nên gọn gàng hơn rất nhiều.
 
-echo '<br> - <br>';
-$fb = new Facebook();
-$fb->share('status fb', 'url fb');
 
-$gg = new Google();
-$gg->share('url gg');
+$url2 = 'Url 2';
+$title2 = 'Title 2';
+$status2 = 'Status 2';
 
-$tw = new Twitter();
-$tw->tweet('url tw', 'title tw');
+echo '<br> - share riêng từng obj: <br>';
+$fb = new fb();
+echo '<br> + fb share: <br>';
+$fb->share($status2, $url2);
 
-echo '<br><br> ShareFacade <br>';
+$gg = new gg();
+echo '<br> + gg share: <br>';
+$gg->share($url2);
+
+$tw = new tw();
+echo '<br> + tw share: <br>';
+$tw->tweet($url2, $title2);
+
+echo '<br> - ShareFacade: <br>';
 $shareFacade = new ShareFacade($fb, $gg, $tw);
-$shareFacade->share('url 2', 'title 2', 'status 2');
+$shareFacade->share($url2, $title2, $status2);
 
 

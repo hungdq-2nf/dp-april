@@ -20,14 +20,14 @@ abstract class BookPrototype
 
     abstract public function __clone();
 
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
 
@@ -55,12 +55,15 @@ class FooBookPrototype extends BookPrototype
     }
 }
 
-echo '<br><br>  <br>';
+echo ' BarBookPrototype <br>';
 $barBookPrototype = new BarBookPrototype();
-$barBookPrototype->setTitle('title 1');
-$barBookPrototype->getTitle();
+$barBookPrototype->setTitle('title bar');
+echo $barBookPrototype->getTitle();
 
-echo '<br><br>  <br>';
+echo '<br><br> FooBookPrototype <br>';
+$fooBookPrototype = new FooBookPrototype();
+$fooBookPrototype->setTitle('title foo');
+echo $fooBookPrototype->getTitle();
 
 
 

@@ -15,9 +15,15 @@ _
 Mục tiêu chính của Facade Pattern không phải là để tránh bạn đọc hướng dẫn dùng API phức tạp. Nó chỉ là một tác dụng phụ. Mục tiêu đầu tiên là giảm khớp nối và tuân theo Luật Demeter.
 1 Facade có nghĩa là để tách một client và một hệ thống con bằng cách nhúng nhiều (nhưng đôi khi chỉ là một) interface, và tất nhiên để giảm sự phức tạp.
 - Facade không cấm bạn truy cập vào hệ thống con
-- Bạn có thể (bạn nên) có nhiều Facade cho một hệ thống phụ
+- Bạn nên có nhiều Facade cho một hệ thống phụ
 Đó là lý do tại sao một Facade tốt không có ``new`` trong đó. Nếu có nhiều sáng tạo cho mỗi phương thức, nó không phải là một mặt tiền, nó là một Builder hoặc một [Abstract\Static\Simple] Factory [Method].
 Facade tốt nhất không có ``new`` và một hàm tạo với các tham số interface-type-hinted. Nếu bạn cần tạo các cá thể mới, hãy dùng Factory làm đối số.
+
+Examples
+--------
+The Facade defines a unified, higher level interface to a subsystem that makes it easier to use. Consumers encounter a Facade when ordering from a catalog. The consumer calls one number and speaks with a customer service representative. The customer service representative acts as a Facade, providing an interface to the order fulfillment department, the billing department, and the shipping department.
+_
+Facade định nghĩa một giao diện cấp cao, thống nhất cho một hệ thống phụ giúp dễ sử dụng hơn. Người tiêu dùng gặp phải một mặt tiền khi đặt hàng từ một cửa hàng. Người tiêu dùng gọi một số và nói chuyện với đại diện dịch vụ khách hàng. Đại diện dịch vụ khách hàng hoạt động như một Mặt tiền, cung cấp một giao diện cho bộ phận thực hiện đơn đặt hàng, phòng thanh toán và bộ phận giao hàng.
 
 UML Diagram
 -----------

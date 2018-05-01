@@ -140,7 +140,7 @@ class Rectangle
 }
 
 #------------ KẾT THÚC ĐỊNH NGHĨA CLASS ----------------------#
-echo '<br><br> rectangle <br>';
+echo '<br> rectangle <br>';
 
 $_GET['shape'] = 'rectangle';
 $_GET['dimensions'] = 100;

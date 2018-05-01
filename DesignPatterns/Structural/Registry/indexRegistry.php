@@ -1,5 +1,5 @@
 <?php
-echo '---- Structural > Registry <br><br>';
+echo '---- Structural > Registry <br>';
 
 /* Structural > Registry
  *
@@ -8,25 +8,27 @@ echo '---- Structural > Registry <br><br>';
 
 abstract class Registry
 {
-    const LOGGER = 'logger';
+    const LOGGER = 'val empty';
 
-    private static $storedValues = [
-        'value0'
-    ];
+    private static $storedValues = [];
 
     private static $allowedKeys = [
         self::LOGGER,
     ];
 
+    public static function init()
+    {
+        return self::LOGGER;
+    }
+
     public static function set($key, $value)
     {
         if (!in_array($key, self::$allowedKeys)) {
-//            throw new \InvalidArgumentException('Invalid key given');
-            echo 'Invalid key given';
+            echo 'Invalid key given';die;
         }
 
+        echo 'ok <br>';
         self::$storedValues[$key] = $value;
-        echo self::$storedValues[$key].'<br>';
     }
 
     public static function get($key)
@@ -34,22 +36,32 @@ abstract class Registry
         if (!in_array($key, self::$allowedKeys)
             || !isset(self::$storedValues[$key])
         ) {
-//            throw new \InvalidArgumentException('Invalid key given');
-            echo 'Invalid key given';
+            echo 'Invalid key given';die;
         }
 
-        echo self::$storedValues[$key].'<br>';
         return self::$storedValues[$key];
     }
 }
 
-echo '<br><br> Registry <br>';
-Registry::set(0,'value1');
-Registry::get(0);
+echo '<br> Registry <br>';
+
+echo '<br>init(): <br>';
+echo '<pre>';
+print_r(Registry::init());
+echo '</pre>';
+
+$key = 0;
+$value = 'val 1';
+
+echo '<br>set($key, $value): <br>';
+Registry::set($key, $value);
+
+echo '<br>get($key): <br>';
+echo '<pre>';
+print_r(Registry::get($key));
+echo '</pre>';
 
 
-
-echo '<br><br>  <br>';
 
 
 
