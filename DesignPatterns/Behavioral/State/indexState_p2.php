@@ -1,67 +1,96 @@
 <?php
 
-class BookContext {
+class BookContext
+{
     private $book = NULL;
     private $bookTitleState = NULL;
+
     //bookList is not instantiated at construct time
-    public function __construct($book_in) {
+    public function __construct($book_in)
+    {
         $this->book = $book_in;
         $this->setTitleState(new BookTitleStateStars());
     }
-    public function getBookTitle() {
+
+    public function getBookTitle()
+    {
         return $this->bookTitleState->showTitle($this);
     }
-    public function getBook() {
+
+    public function getBook()
+    {
         return $this->book;
     }
-    public function setTitleState($titleState_in) {
+
+    public function setTitleState($titleState_in)
+    {
         $this->bookTitleState = $titleState_in;
     }
 }
 
-interface BookTitleStateInterface {
+interface BookTitleStateInterface
+{
     public function showTitle($context_in);
 }
 
-class BookTitleStateExclaim implements BookTitleStateInterface {
+class BookTitleStateExclaim implements BookTitleStateInterface
+{
     private $titleCount = 0;
-    public function showTitle($context_in) {
+
+    public function showTitle($context_in)
+    {
         $title = $context_in->getBook()->getTitle();
         $this->titleCount++;
         $context_in->setTitleState(new BookTitleStateStars());
-        return Str_replace(' ','!',$title);
+        return Str_replace(' ', '!', $title);
     }
 }
 
-class BookTitleStateStars implements BookTitleStateInterface {
+class BookTitleStateStars implements BookTitleStateInterface
+{
     private $titleCount = 0;
-    public function showTitle($context_in) {
+
+    public function showTitle($context_in)
+    {
         $title = $context_in->getBook()->getTitle();
         $this->titleCount++;
         if (1 < $this->titleCount) {
             $context_in->setTitleState(new BookTitleStateExclaim);
         }
-        return Str_replace(' ','*',$title);
+        return Str_replace(' ', '*', $title);
     }
 }
 
-class Book {
+class Book
+{
     private $author;
     private $title;
-    function __construct($title_in, $author_in) {
+
+    function __construct($title_in, $author_in)
+    {
         $this->author = $author_in;
-        $this->title  = $title_in;
+        $this->title = $title_in;
     }
-    function getAuthor() {return $this->author;}
-    function getTitle() {return $this->title;}
-    function getAuthorAndTitle() {
+
+    function getAuthor()
+    {
+        return $this->author;
+    }
+
+    function getTitle()
+    {
+        return $this->title;
+    }
+
+    function getAuthorAndTitle()
+    {
         return $this->getTitle() . ' by ' . $this->getAuthor();
     }
 }
 
 writeln('');
 
-$book = new Book('PHP for Cats','Larry Truett');;
+$book = new Book('PHP for Cats', 'Larry Truett');;
 $context = new bookContext($book);
 
 writeln('test 1 - show name');
@@ -80,8 +109,9 @@ writeln('test 4 - show name');
 writeln($context->getBookTitle());
 writeln('');
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>

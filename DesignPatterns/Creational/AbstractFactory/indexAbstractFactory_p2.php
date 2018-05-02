@@ -3,27 +3,40 @@
 /*
  * BookFactory classes
  */
-abstract class AbstractBookFactory {
+
+abstract class AbstractBookFactory
+{
     abstract function makePHPBook();
+
     abstract function makeMySQLBook();
 }
 
-class OReillyBookFactory extends AbstractBookFactory {
+class OReillyBookFactory extends AbstractBookFactory
+{
     private $context = "OReilly";
-    function makePHPBook() {
+
+    function makePHPBook()
+    {
         return new OReillyPHPBook;
     }
-    function makeMySQLBook() {
+
+    function makeMySQLBook()
+    {
         return new OReillyMySQLBook;
     }
 }
 
-class SamsBookFactory extends AbstractBookFactory {
+class SamsBookFactory extends AbstractBookFactory
+{
     private $context = "Sams";
-    function makePHPBook() {
+
+    function makePHPBook()
+    {
         return new SamsPHPBook;
     }
-    function makeMySQLBook() {
+
+    function makeMySQLBook()
+    {
         return new SamsMySQLBook;
     }
 }
@@ -31,53 +44,74 @@ class SamsBookFactory extends AbstractBookFactory {
 /*
  *   Book classes
  */
-abstract class AbstractBook {
+
+abstract class AbstractBook
+{
     abstract function getAuthor();
+
     abstract function getTitle();
 }
 
-abstract class AbstractMySQLBook extends AbstractBook {
+abstract class AbstractMySQLBook extends AbstractBook
+{
     private $subject = "MySQL";
 }
 
-class OReillyMySQLBook extends AbstractMySQLBook {
+class OReillyMySQLBook extends AbstractMySQLBook
+{
     private $author;
     private $title;
-    function __construct() {
+
+    function __construct()
+    {
         $this->author = 'George Reese, Randy Jay Yarger, and Tim King';
         $this->title = 'Managing and Using MySQL';
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
 }
 
-class SamsMySQLBook extends AbstractMySQLBook {
+class SamsMySQLBook extends AbstractMySQLBook
+{
     private $author;
     private $title;
-    function __construct() {
+
+    function __construct()
+    {
         $this->author = 'Paul Dubois';
         $this->title = 'MySQL, 3rd Edition';
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
 }
 
-abstract class AbstractPHPBook extends AbstractBook {
+abstract class AbstractPHPBook extends AbstractBook
+{
     private $subject = "PHP";
 }
 
-class OReillyPHPBook extends AbstractPHPBook {
+class OReillyPHPBook extends AbstractPHPBook
+{
     private $author;
     private $title;
     private static $oddOrEven = 'odd';
+
     function __construct()
     {
         //alternate between 2 books
@@ -85,25 +119,31 @@ class OReillyPHPBook extends AbstractPHPBook {
             $this->author = 'Rasmus Lerdorf and Kevin Tatroe';
             $this->title = 'Programming PHP';
             self::$oddOrEven = 'even';
-        }
-        else {
+        } else {
             $this->author = 'David Sklar and Adam Trachtenberg';
             $this->title = 'PHP Cookbook';
             self::$oddOrEven = 'odd';
         }
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
 }
 
-class SamsPHPBook extends AbstractPHPBook {
+class SamsPHPBook extends AbstractPHPBook
+{
     private $author;
     private $title;
-    function __construct() {
+
+    function __construct()
+    {
         //alternate randomly between 2 books
         mt_srand((double)microtime() * 10000000);
         $rand_num = mt_rand(0, 1);
@@ -111,16 +151,19 @@ class SamsPHPBook extends AbstractPHPBook {
         if (1 > $rand_num) {
             $this->author = 'George Schlossnagle';
             $this->title = 'Advanced PHP Programming';
-        }
-        else {
+        } else {
             $this->author = 'Christian Wenz';
             $this->title = 'PHP Phrasebook';
         }
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
 }
@@ -145,20 +188,21 @@ writeln('');
 function testConcreteFactory($bookFactoryInstance)
 {
     $phpBookOne = $bookFactoryInstance->makePHPBook();
-    writeln('first php Author: '.$phpBookOne->getAuthor());
-    writeln('first php Title: '.$phpBookOne->getTitle());
+    writeln('first php Author: ' . $phpBookOne->getAuthor());
+    writeln('first php Title: ' . $phpBookOne->getTitle());
 
     $phpBookTwo = $bookFactoryInstance->makePHPBook();
-    writeln('second php Author: '.$phpBookTwo->getAuthor());
-    writeln('second php Title: '.$phpBookTwo->getTitle());
+    writeln('second php Author: ' . $phpBookTwo->getAuthor());
+    writeln('second php Title: ' . $phpBookTwo->getTitle());
 
     $mySqlBook = $bookFactoryInstance->makeMySQLBook();
-    writeln('MySQL Author: '.$mySqlBook->getAuthor());
-    writeln('MySQL Title: '.$mySqlBook->getTitle());
+    writeln('MySQL Author: ' . $mySqlBook->getAuthor());
+    writeln('MySQL Title: ' . $mySqlBook->getTitle());
 }
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>

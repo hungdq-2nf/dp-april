@@ -1,64 +1,90 @@
 <?php
 
-class ProxyBookList {
+class ProxyBookList
+{
     private $bookList = NULL;
+
     //bookList is not instantiated at construct time
-    function __construct() {
+    function __construct()
+    {
     }
-    function getBookCount() {
+
+    function getBookCount()
+    {
         if (NULL == $this->bookList) {
             $this->makeBookList();
         }
         return $this->bookList->getBookCount();
     }
-    function addBook($book) {
+
+    function addBook($book)
+    {
         if (NULL == $this->bookList) {
             $this->makeBookList();
         }
         return $this->bookList->addBook($book);
     }
-    function getBook($bookNum) {
+
+    function getBook($bookNum)
+    {
         if (NULL == $this->bookList) {
             $this->makeBookList();
         }
         return $this->bookList->getBook($bookNum);
     }
-    function removeBook($book) {
+
+    function removeBook($book)
+    {
         if (NULL == $this->bookList) {
             $this->makeBookList();
         }
         return $this->bookList->removeBook($book);
     }
+
     //Create
-    function makeBookList() {
+    function makeBookList()
+    {
         $this->bookList = new bookList();
     }
 }
 
-class BookList {
+class BookList
+{
     private $books = array();
     private $bookCount = 0;
-    public function __construct() {
+
+    public function __construct()
+    {
     }
-    public function getBookCount() {
+
+    public function getBookCount()
+    {
         return $this->bookCount;
     }
-    private function setBookCount($newCount) {
+
+    private function setBookCount($newCount)
+    {
         $this->bookCount = $newCount;
     }
-    public function getBook($bookNumberToGet) {
-        if ( (is_numeric($bookNumberToGet)) && ($bookNumberToGet <= $this->getBookCount())) {
+
+    public function getBook($bookNumberToGet)
+    {
+        if ((is_numeric($bookNumberToGet)) && ($bookNumberToGet <= $this->getBookCount())) {
             return $this->books[$bookNumberToGet];
         } else {
             return NULL;
         }
     }
-    public function addBook(Book $book_in) {
+
+    public function addBook(Book $book_in)
+    {
         $this->setBookCount($this->getBookCount() + 1);
         $this->books[$this->getBookCount()] = $book_in;
         return $this->getBookCount();
     }
-    public function removeBook(Book $book_in) {
+
+    public function removeBook(Book $book_in)
+    {
         $counter = 0;
         while (++$counter <= $this->getBookCount()) {
             if ($book_in->getAuthorAndTitle() == $this->books[$counter]->getAuthorAndTitle()) {
@@ -72,28 +98,37 @@ class BookList {
     }
 }
 
-class Book {
+class Book
+{
     private $author;
     private $title;
-    function __construct($title_in, $author_in) {
+
+    function __construct($title_in, $author_in)
+    {
         $this->author = $author_in;
-        $this->title  = $title_in;
+        $this->title = $title_in;
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
-    function getAuthorAndTitle() {
-        return $this->getTitle().' by '.$this->getAuthor();
+
+    function getAuthorAndTitle()
+    {
+        return $this->getTitle() . ' by ' . $this->getAuthor();
     }
 }
 
 writeln('');
 
 $proxyBookList = new ProxyBookList();
-$inBook = new Book('PHP for Cats','Larry Truett');
+$inBook = new Book('PHP for Cats', 'Larry Truett');
 $proxyBookList->addBook($inBook);
 
 writeln('test 1 - show the book count after a book is added');
@@ -112,8 +147,9 @@ writeln($proxyBookList->getBookCount());
 writeln('');
 
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>

@@ -1,9 +1,12 @@
 <?php
 
-class StrategyContext {
+class StrategyContext
+{
     private $strategy = NULL;
+
     //bookList is not instantiated at construct time
-    public function __construct($strategy_ind_id) {
+    public function __construct($strategy_ind_id)
+    {
         switch ($strategy_ind_id) {
             case "C":
                 $this->strategy = new StrategyCaps();
@@ -16,57 +19,75 @@ class StrategyContext {
                 break;
         }
     }
-    public function showBookTitle($book) {
+
+    public function showBookTitle($book)
+    {
         return $this->strategy->showTitle($book);
     }
 }
 
-interface StrategyInterface {
+interface StrategyInterface
+{
     public function showTitle($book_in);
 }
 
-class StrategyCaps implements StrategyInterface {
-    public function showTitle($book_in) {
+class StrategyCaps implements StrategyInterface
+{
+    public function showTitle($book_in)
+    {
         $title = $book_in->getTitle();
-        return strtoupper ($title);
+        return strtoupper($title);
     }
 }
 
-class StrategyExclaim implements StrategyInterface {
-    public function showTitle($book_in) {
+class StrategyExclaim implements StrategyInterface
+{
+    public function showTitle($book_in)
+    {
         $title = $book_in->getTitle();
-        return Str_replace(' ','!',$title);
+        return Str_replace(' ', '!', $title);
     }
 }
 
-class StrategyStars implements StrategyInterface {
-    public function showTitle($book_in) {
+class StrategyStars implements StrategyInterface
+{
+    public function showTitle($book_in)
+    {
         $title = $book_in->getTitle();
-        return Str_replace(' ','*',$title);
+        return Str_replace(' ', '*', $title);
     }
 }
 
-class Book {
+class Book
+{
     private $author;
     private $title;
-    function __construct($title_in, $author_in) {
+
+    function __construct($title_in, $author_in)
+    {
         $this->author = $author_in;
-        $this->title  = $title_in;
+        $this->title = $title_in;
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
-    function getAuthorAndTitle() {
+
+    function getAuthorAndTitle()
+    {
         return $this->getTitle() . ' by ' . $this->getAuthor();
     }
 }
 
 writeln('');
 
-$book = new Book('PHP for Cats','Larry Truett');
+$book = new Book('PHP for Cats', 'Larry Truett');
 
 $strategyContextC = new StrategyContext('C');
 $strategyContextE = new StrategyContext('E');
@@ -84,8 +105,9 @@ writeln('test 3 - show name context S');
 writeln($strategyContextS->showBookTitle($book));
 writeln('');
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>
