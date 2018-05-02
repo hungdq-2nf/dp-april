@@ -1,5 +1,5 @@
 <?php
-echo '---- Structural > Adapter <br><br>';
+echo '---- Structural > Adapter <br>';
 
 /* Structural > Adapter
  *
@@ -15,26 +15,18 @@ interface BookInterface
     public function getPage();
 }
 
-interface EBookInterface
-{
-    public function unlock();
-
-    public function pressNext();
-
-    public function getPage();
-}
-
 class Book implements BookInterface
 {
-    private $page;
+    private $page = 1;
 
     public function open()
     {
-        $this->page = 1;
+        echo $this->page . '<br>';
     }
 
     public function turnPage()
     {
+        echo 'ok B <br>';
         $this->page++;
     }
 
@@ -44,21 +36,30 @@ class Book implements BookInterface
     }
 }
 
+interface EBookInterface
+{
+    public function unlock();
+
+    public function pressNext();
+
+    public function getPage();
+}
+
 class Kindle implements EBookInterface
 {
     private $page = 6;
 
     private $totalPages = 100;
 
-    public function pressNext()
-    {
-        echo 'press next now';
-        $this->page++;
-    }
-
     public function unlock()
     {
-        echo 'unlock page';
+        echo 'ok K <br>';
+    }
+
+    public function pressNext()
+    {
+        echo 'ok K <br>';
+        $this->page++;
     }
 
     public function getPage()
@@ -82,47 +83,66 @@ class EBookAdapter implements BookInterface
 
     public function open()
     {
+        echo 'ok E $this->eBook->unlock()<br>';
         $this->eBook->unlock();
     }
 
     public function turnPage()
     {
+        echo 'ok E $this->eBook->pressNext()<br>';
         $this->eBook->pressNext();
     }
 
     public function getPage()
     {
+        echo 'ok E $this->eBook->getPage()[0]<br>';
         return $this->eBook->getPage()[0];
     }
 }
 
 
-echo '<br>_:<br>';
+echo '<br> - Book(): <br>';
 $book = new Book();
-echo '<br>- open() <br>';
+echo '$book->open(): <br>';
 echo $book->open();
 
-echo '<br>- turnPage() <br>';
+echo '$book->turnPage(): <br>';
 echo $book->turnPage();
 
-echo '<br>- getPage() <br>';
-echo $book->getPage();
+echo '$book->getPage(): <br>';
+echo '<pre>';
+print_r($book->getPage());
+echo '</pre>';
 
 
-echo '<br><br>_DP:<br>';
-
+echo ' - Kindle():<br>';
 $kindle = new Kindle();
+
+echo '$kindle->pressNext(): <br>';
+$kindle->pressNext();
+
+echo '$kindle->unlock(): <br>';
+$kindle->unlock();
+
+echo '$kindle->getPage(): <br>';
+echo '<pre>';
+print_r($kindle->getPage());
+echo '</pre>';
+
+
+echo ' - EBookAdapter($kindle):<br>';
 $ebook = new EBookAdapter($kindle);
 
-echo '<br>- open() <br>';
+echo '<br>$ebook->open() <br>';
 echo $ebook->open();
 
-echo '<br>- turnPage() <br>';
+echo '<br>$ebook->turnPage() <br>';
 echo $ebook->turnPage();
 
-echo '<br>- getPage() <br>';
-echo $ebook->getPage();
-
+echo '<br>$ebook->getPage() <br>';
+echo '<pre>';
+print_r($ebook->getPage());
+echo '</pre>';
 
 
 

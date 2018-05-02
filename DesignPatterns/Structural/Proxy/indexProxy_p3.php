@@ -129,12 +129,12 @@ echo $brian->dropFood(1, true);
 
 
 
-echo '<br><br> Cat <br>';
+echo '<br> Cat <br>';
 $cat = new Cat('Cat 1');
 $cat->dropFood(1, false);
 $cat->displayFood(2);
 
-echo '<br><br> Dog <br>';
+echo '<br> Dog <br>';
 $dog = new Dog('Dog 1');
 $dog->dropFood(1, true);
 $dog->displayFood(2);
@@ -154,13 +154,21 @@ class AnimalFeedersFeeder2
     }
 }
 
-echo '<br><br> AnimalFeederProxy Cat 1<br>';
-$animalFeederProxy = new AnimalFeederProxy('Feeder1', 'Cat 1');
+echo '<br> AnimalFeederProxy Cat 1<br>';
+$feeder1 = 'Feeder1';
+$nameCat1 = 'Cat 1';
+$methodCat1 = 'methodCat1';
+
+$animalFeederProxy = new AnimalFeederProxy($feeder1, $nameCat1);
 $animalFeederProxy->__call('methodCat1', [1]);
 
-echo '<br><br> AnimalFeederProxy Dog 1<br>';
-$animalFeederProxy = new AnimalFeederProxy('Feeder2', 'Dog 1');
-$animalFeederProxy->__call('methodDog1', [1]);
+echo '<br> AnimalFeederProxy Dog 1<br>';
+$feeder2 = 'Feeder2';
+$nameDog1 = 'Dog 1';
+$methodDog1 = 'methodDog1';
+
+$animalFeederProxy = new AnimalFeederProxy($feeder2, $nameDog1);
+$animalFeederProxy->__call($methodDog1, [1]);
 
 
 

@@ -1,5 +1,5 @@
 <?php
-echo '<br><br> _p1:';
+echo '_p1:';
 require 'indexRegistry.php';
 
 

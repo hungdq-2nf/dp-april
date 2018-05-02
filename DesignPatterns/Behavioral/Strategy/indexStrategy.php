@@ -16,16 +16,14 @@ class IdComparator implements ComparatorInterface
 {
     public function compareAsc($a, $b)
     {
-        //asc
-        if ($a ==$b) return 0;
-        return ($a <$b) ? -1 : 1;
+        if ($a == $b) return 0;
+        return ($a < $b) ? -1 : 1;
     }
 
     public function compareDesc($a, $b)
     {
-        //desc
-        if ($a ==$b) return 0;
-        return ($a >$b) ? -1 : 1;
+        if ($a == $b) return 0;
+        return ($a > $b) ? -1 : 1;
     }
 }
 
@@ -36,7 +34,7 @@ class DateComparator implements ComparatorInterface
         $aDate = new \DateTime($a);
         $bDate = new \DateTime($b);
 
-        if ($aDate ==$bDate) return 0;
+        if ($aDate == $bDate) return 0;
         return ($aDate < $bDate) ? -1 : 1;
     }
 
@@ -45,7 +43,7 @@ class DateComparator implements ComparatorInterface
         $aDate = new \DateTime($a);
         $bDate = new \DateTime($b);
 
-        if ($aDate ==$bDate) return 0;
+        if ($aDate == $bDate) return 0;
         return ($aDate > $bDate) ? -1 : 1;
     }
 }
@@ -59,26 +57,10 @@ class Context
         $this->comparator = $comparator;
     }
 
-    public function compareAsc($a, $b)
-    {
-        //asc
-        if ($a ==$b) return 0;
-        return ($a <$b) ? -1 : 1;
-    }
-
-    public function compareDesc($a, $b)
-    {
-        //desc
-        if ($a ==$b) return 0;
-        return ($a >$b) ? -1 : 1;
-    }
-
     public function executeStrategy(array $elements)
     {
 //        uasort($elements, [$this->comparator, 'compareAsc']);
         uasort($elements, [$this->comparator, 'compareDesc']);
-//        uasort($elements, [$this, 'compareAsc']);
-//        uasort($elements, [$this, 'compareDesc']);
 
         return $elements;
     }
@@ -86,13 +68,20 @@ class Context
 
 //https://stackoverflow.com/questions/30365346/what-is-the-spaceship-operator-in-php-7
 
-echo '<br><br> $contextId <br>';
+$arrayId = [2,1,5];
+$arrayDate = [
+    '2018-04-09',
+    '2018-04-01',
+    '2018-04-02'
+];
+
+echo ' $contextId <br>';
 $contextId = new Context(new IdComparator());
 echo '<pre>';
-print_r($contextId->executeStrategy([2,1,5]));
+print_r($contextId->executeStrategy($arrayId));
 
 echo '<br><br> $contextDate <br>';
 $contextDate = new Context(new DateComparator());
 echo '<pre>';
-print_r($contextDate->executeStrategy(['2018-04-09', '2018-04-01', '2018-04-02']));
+print_r($contextDate->executeStrategy($arrayDate));
 

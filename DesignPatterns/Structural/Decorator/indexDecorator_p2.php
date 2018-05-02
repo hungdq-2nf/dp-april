@@ -41,14 +41,12 @@ class SunRoof extends CarFeature
 {
     function cost()
     {
-//        return $this->car->cost() + 1500;
-        return 30000 + 1500;
+        return $this->car->cost() + 1500;
     }
 
     function description()
     {
-//        return $this->car->description() . ",  cửa sổ trời";
-        return "Xe SUV" . ",  cửa sổ trời";
+        return $this->car->description() . ",  cửa sổ trời";
     }
 }
 
@@ -56,14 +54,12 @@ class LeatherSeats extends CarFeature
 {
     function cost()
     {
-//        return $this->car->cost() + 1000;
-        return 30000 + 1000;
+        return $this->car->cost() + 1000;
     }
 
     function description()
     {
-//        return $this->car->description() . ",  ghế bọc da";
-        return "Xe SUV" . ",  ghế bọc da";
+        return $this->car->description() . ",  ghế bọc da";
     }
 }
 
@@ -83,7 +79,7 @@ class GPSNavigation extends CarFeature
 // Tạo ra một xe cơ bản chưa có tùy chọn
 $basicCar = new Suv();
 
-// Truyền đối tượng này vào class mới thêm tùy chọn
+// Truyền obj này vào class mới thêm tùy chọn
 $carWithSunRoof = new SunRoof($basicCar);
 
 // Kiểm tra các tính năng trên xe đã có tùy chọn
@@ -106,20 +102,34 @@ $carFullOption = new GPSNavigation($carWithSunRoofAndLeatherSeats);
 echo $carFullOption->description() . '<br>';
 echo " giá " . $carFullOption->cost() . '<br>';
 
-echo '<br><br> Suv <br>';
+echo '<br> Suv <br>';
 $suv = new Suv();
 echo $suv->cost() . '<br>';
 echo $suv->description() . '<br>';
 
-echo '<br><br> SunRoof <br>';
-$sunRoof = new SunRoof(Car::class);
-echo $sunRoof->cost() . '<br>';
-echo $sunRoof->description() . '<br>';
 
-echo '<br><br> LeatherSeats <br>';
-$leatherSeats = new LeatherSeats(Car::class);
-echo $leatherSeats->cost() . '<br>';
-echo $leatherSeats->description() . '<br>';
+echo '<br> SunRoof';
+$sunRoof = new SunRoof($suv);
+
+echo '<pre>';
+print_r($sunRoof->cost());
+echo '</pre>';
+
+echo '<pre>';
+print_r($sunRoof->description());
+echo '</pre>';
+
+
+echo 'LeatherSeats <br>';
+$leatherSeats = new LeatherSeats($suv);
+
+echo '<pre>';
+print_r($leatherSeats->cost());
+echo '</pre>';
+
+echo '<pre>';
+print_r($leatherSeats->description());
+echo '</pre>';
 
 
 

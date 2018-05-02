@@ -23,7 +23,6 @@ abstract class ReadFileAbstract
 
 class ReadFile extends ReadFileAbstract
 {
-//    const DOCUMENTS_PATH = "/home/simon";
     const DOCUMENTS_PATH = "E:/Work/dp-april/file";
 
     public function __construct($fileName)
@@ -45,33 +44,32 @@ class ReadFileProxy extends ReadFileAbstract
     public function lazyLoad()
     {
         if ($this->file === null) {
+            echo 'file is null <br>';
             $this->file = new ReadFile($this->fileName);
         }
         return $this->file;
     }
 }
 
-$proxies = array();
-
+$proxies = [];
 for ($i = 0; $i < 10; $i++) {
     // tell the proxy which file should be read (when lazy loaded)
     $proxies[$i] = new ReadFileProxy("file" . $i . ".txt");
 }
-
 // Now it's time to read the contents of file3.txt
 $file3 = $proxies[3]->lazyLoad();
 
-echo '<br><br> $file3->getContents() <br>';
-// echo the contents of file3.txt
+echo '$file3->getContents() <br>';
 echo $file3->getContents();
 
 
-
-echo '<br><br> ReadFile <br>';
-$readFile = new ReadFile('file1.txt');
+echo '<br><br> ReadFile';
+$file1 = 'file1.txt';
+$readFile = new ReadFile($file1);
 
 echo '<br><br> ReadFileProxy <br>';
-$readFileProxy = new ReadFileProxy('file2.txt');
+$file2 = 'file2.txt';
+$readFileProxy = new ReadFileProxy($file2);
 echo $readFileProxy->lazyLoad()->getContents();
 
 

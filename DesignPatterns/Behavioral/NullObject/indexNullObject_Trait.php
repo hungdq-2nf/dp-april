@@ -3,7 +3,7 @@ echo '---- Behavioral > Null Object - Trait <br><br>';
 
 /* Behavioral > Null Object - Trait
  *
- * đối tượng null
+ * obj null
  */
 
 trait NullPattern

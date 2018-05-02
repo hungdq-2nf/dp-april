@@ -95,19 +95,6 @@ class CarBuilder implements BuilderInterface
     }
 }
 
-class Director
-{
-    public function build(BuilderInterface $builder)
-    {
-        $builder->createVehicle();
-        $builder->addDoors();
-        $builder->addEngine();
-        $builder->addWheel();
-
-        return $builder->getVehicle();
-    }
-}
-
 class TruckBuilder implements BuilderInterface
 {
     /**
@@ -141,6 +128,19 @@ class TruckBuilder implements BuilderInterface
     public function getVehicle()
     {
         return $this->truck;
+    }
+}
+
+class Director
+{
+    public function build(BuilderInterface $builder)
+    {
+        $builder->createVehicle();
+        $builder->addDoors();
+        $builder->addEngine();
+        $builder->addWheel();
+
+        return $builder->getVehicle();
     }
 }
 

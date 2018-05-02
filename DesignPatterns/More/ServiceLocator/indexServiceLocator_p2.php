@@ -107,43 +107,43 @@ echo '<pre>';
 print_r($serviceLocator->get('mec'));
 echo '</pre>';
 
-echo '<br> $serviceLocator->has(\'mec\') <br>';
+echo ' $serviceLocator->has(\'mec\') <br>';
 echo '<pre>';
 print_r($serviceLocator->has('mec'));
 echo '</pre>';
 
-echo '<br> $serviceLocator->remove(\'mec\') <br>';
+echo ' $serviceLocator->remove(\'mec\') <br>';
 echo '<pre>';
 print_r($serviceLocator->remove('mec'));
 echo '</pre>';
 
-echo '<br> $serviceLocator->clear() <br>';
+echo ' $serviceLocator->clear() <br>';
 echo '<pre>';
 print_r($serviceLocator->clear());
 echo '</pre>';
 
 
-echo '<br> $serviceLocator->set(\'bmv\', new BMV()) <br>';
+echo ' $serviceLocator->set(\'bmv\', new BMV()) <br>';
 echo '<pre>';
 print_r($serviceLocator->set('bmv', new BMW()));
 echo '</pre>';
 
-echo '<br> $serviceLocator->get(\'bmw\') <br>';
+echo ' $serviceLocator->get(\'bmw\') <br>';
 echo '<pre>';
 print_r($serviceLocator->get('bmw'));
 echo '</pre>';
 
-echo '<br> $serviceLocator->has(\'bmw\') <br>';
+echo ' $serviceLocator->has(\'bmw\') <br>';
 echo '<pre>';
 print_r($serviceLocator->has('bmw'));
 echo '</pre>';
 
-echo '<br> $serviceLocator->remove(\'bmw\') <br>';
+echo ' $serviceLocator->remove(\'bmw\') <br>';
 echo '<pre>';
 print_r($serviceLocator->remove('bmw'));
 echo '</pre>';
 
-echo '<br> $serviceLocator->clear() <br>';
+echo ' $serviceLocator->clear() <br>';
 echo '<pre>';
 print_r($serviceLocator->clear());
 echo '</pre>';

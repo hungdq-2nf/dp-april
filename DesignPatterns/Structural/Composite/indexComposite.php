@@ -38,25 +38,20 @@ class Form implements RenderableInterface
 {
     private $elements;
 
+    public function addElement(RenderableInterface $element)
+    {
+        $this->elements[] = $element;
+    }
+
     public function render()
     {
         $formCode = '<form>';
-
-        $this->elements = [1,2];
-
         foreach ($this->elements as $element) {
             $formCode .= $element->render();
         }
-
         $formCode .= '</form>';
 
         return $formCode;
-    }
-
-//    public function addElement(RenderableInterface $element)
-    public function addElement($element)
-    {
-        $this->elements[] = $element;
     }
 }
 
@@ -64,16 +59,16 @@ echo '<br> $inputElement->render() <br>';
 $inputElement = new InputElement();
 echo $inputElement->render();
 
-echo '<br> $textElement->render() <br>';
-$textElement = new TextElement('text 1');
+echo '<br><br> $textElement->render() <br>';
+$text = 'text 1';
+$textElement = new TextElement($text);
 echo $textElement->render();
 
-echo '<br> $form->render() <br>';
+echo '<br><br> $form->render() <br>';
 $form = new Form();
-//echo $form->render();
 
-$element = 1;
-$element = [1, 2];
-$form->addElement(RenderableInterface::class);
+//$form->addElement($inputElement);
+$form->addElement($textElement);
 
+echo $form->render();
 

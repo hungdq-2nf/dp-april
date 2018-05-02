@@ -3,20 +3,11 @@
 
 //adapter - bộ nạp      < Strutural
 
-class Customer
+interface SmartLink
 {
-    private $pay;
+    function addItem($itemName);
 
-    function __construct(BanknetToSmartLinkAdapter $pay)
-    {
-        $this->pay = $pay;
-    }
-
-    function transfer($itemName, $itemAmount)
-    {
-        $this->pay->addItem($itemName);
-        $this->pay->addFund($itemAmount);
-    }
+    function addFund($itemAmount);
 }
 
 class BanknetTransfer
@@ -36,26 +27,6 @@ class BanknetTransfer
     {
         $this->addOneItem($name);
         $this->addItemAmount($amout);
-    }
-}
-
-interface SmartLink
-{
-    function addItem($itemName);
-
-    function addFund($itemAmount);
-}
-
-class SmartLinkTransfer implements SmartLink
-{
-    function addItem($itemName)
-    {
-        echo "1 item added: " . $itemName;
-    }
-
-    function addFund($itemAmount)
-    {
-        echo "1 item added with amount: " . $itemAmount;
     }
 }
 
@@ -80,6 +51,35 @@ class BanknetToSmartLinkAdapter implements SmartLink
     function addFund($itemAmount)
     {
         $this->payObj->addItemAmount($itemAmount);
+    }
+}
+
+class Customer
+{
+    private $pay;
+
+    function __construct(BanknetToSmartLinkAdapter $pay)
+    {
+        $this->pay = $pay;
+    }
+
+    function transfer($itemName, $itemAmount)
+    {
+        $this->pay->addItem($itemName);
+        $this->pay->addFund($itemAmount);
+    }
+}
+
+class SmartLinkTransfer implements SmartLink
+{
+    function addItem($itemName)
+    {
+        echo "1 item added: " . $itemName;
+    }
+
+    function addFund($itemAmount)
+    {
+        echo "1 item added with amount: " . $itemAmount;
     }
 }
 

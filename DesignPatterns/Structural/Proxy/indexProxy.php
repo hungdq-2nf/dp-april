@@ -23,10 +23,10 @@ class Record
     public function __get($name)
     {
         if (!isset($this->data[$name])) {
-            throw new \OutOfRangeException('Invalid name given');
+            echo 'Invalid name given';
+        } else {
+            return $this->data[$name];
         }
-
-        return $this->data[$name];
     }
 }
 
@@ -63,16 +63,44 @@ class RecordProxy extends Record
     }
 }
 
-echo '<br><br> Record <br>';
-$record = new Record(['name' => 'Audi']);
-$record->__set('name', 'Audi');
-$record->__get('name');
+echo 'Record <br>';
+$data = [
+    'name1' => 'Audi 1',
+    'name2' => 'Audi 2',
+    'name3' => 'Audi 3'
+];
+$name1 = 'name1';
+$value1 = 'Audi 1';
+
+$record = new Record($data);
+$record->__set($name1, $value1);
+
+echo '<pre>';
+print_r($record->__get($name1));
+echo '</pre>';
 
 
-echo '<br><br> RecordProxy <br>';
-$recordProxy = new RecordProxy(['name2' => 'Audi 2']);
-$recordProxy->__set('name3', 'Audi 3');
+echo '-- RecordProxy <br>';
+$dataEmpty = [];
+$name4 = 'name 4';
+$value4 = 'Audi 4';
+
+echo '<br>RecordProxy __construct have data <br>';
+$recordProxy = new RecordProxy($data);
 echo $recordProxy->isDirty();
+
+echo '<br>RecordProxy __construct not data <br>';
+$recordProxy = new RecordProxy($dataEmpty);
+echo $recordProxy->isDirty();
+
+echo '<br>RecordProxy not __set data <br>';
+echo $recordProxy->isDirty();
+
+echo '<br>RecordProxy have __set data <br>';
+$recordProxy->__set($name4, $value4);
+echo $recordProxy->isDirty();
+
+
 
 
 

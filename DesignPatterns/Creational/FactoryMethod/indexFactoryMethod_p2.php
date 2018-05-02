@@ -4,17 +4,17 @@
 //factory - nhà máy tạo thực thể    < Creational
 
 #------------ ĐỊNH NGHĨA CLASS ----------------------#
-/* Định nghĩa class ShapeFactory sử dụng Factory pattern
+/* Định nghĩa class ShapeFactory dùng Factory pattern
  * The class contains no attributes.
  * The class contains one method: Create().
  */
 
 abstract class ShapeFactory
 {
-    // Phương thức static để tạo đối tượng
+    // Phương thức static để tạo obj
     static function Create($type, array $sizes)
     {
-        // Xác định dạng đối tượng theo tham số nhận vào
+        // Xác định dạng obj theo tham số nhận vào
         switch ($type) {
             case 'rectangle':
                 return new Rectangle($sizes[0], $sizes[1]);
@@ -140,7 +140,7 @@ class Rectangle
 }
 
 #------------ KẾT THÚC ĐỊNH NGHĨA CLASS ----------------------#
-echo '<br><br> rectangle <br>';
+echo '<br> rectangle <br>';
 
 $_GET['shape'] = 'rectangle';
 $_GET['dimensions'] = 100;
@@ -151,7 +151,7 @@ $_GET['d'] = [10, 20, 30];
 if (isset($_GET['shape'], $_GET['dimensions'])
     && $_GET['shape'] == 'rectangle'
 ) {
-    // Tạo ra một đối tượng từ với thông số từ query string
+    // Tạo ra một obj từ với thông số từ query string
     $obj = ShapeFactory::Create($_GET['s'], $_GET['d']);
 
     echo "<h4>Tạo ra hình {$_GET['shape']}:</h4>";
@@ -172,7 +172,7 @@ $_GET['d'] = [10, 20, 30];
 if (isset($_GET['shape'], $_GET['dimensions'])
     && $_GET['shape'] == 'triangle'
 ) {
-    // Tạo ra một đối tượng từ với thông số từ query string
+    // Tạo ra một obj từ với thông số từ query string
     $obj = ShapeFactory::Create($_GET['s'], $_GET['d']);
 
     echo "<h4>Tạo ra hình {$_GET['shape']}:</h4>";

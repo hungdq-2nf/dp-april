@@ -132,7 +132,7 @@ echo '<pre>';
 print_r($germanFactory->create(FactoryMethod::FAST));
 echo '</pre>';
 
-echo '<br><br> ItalianFactory <br>';
+echo '<br> ItalianFactory <br>';
 $italianFactory = new ItalianFactory();
 
 echo '<br> $italianFactory type cheap: <br>';

@@ -125,7 +125,7 @@ class NullUser implements UserInterface
 //    return $user;
 //}
 
-//Nếu không sử dụng NullUser mỗi khi gọi các phương thức của User chúng ta cần kiểm tra xem có null hay không?
+//Nếu không dùng NullUser mỗi khi gọi các phương thức của User chúng ta cần kiểm tra xem có null hay không?
 
 // Lấy người dùng có ID bằng 1 trong hệ thống
 //$user = $userMapper->fetchById(1);
@@ -134,7 +134,7 @@ class NullUser implements UserInterface
 //    echo $user->getName() . " " . $user->getEmail();
 //}
 
-//Sử dụng NullUser chúng ta không cần phải kiểm tra mỗi khi có các thao tác với class User:
+//dùng NullUser chúng ta không cần phải kiểm tra mỗi khi có các thao tác với class User:
 //$user = $userMapper->fetchById("ID phải là số, nhập chữ xem sao...");
 
 //echo $user->getName() . " " . $user->getEmail();

@@ -173,11 +173,13 @@ $processruns->add(function () {
 $processruns->add(function () {
     echo "world";
 });
+
 $processruns->add(array($mydog, 'bark'));
 $processruns->add('test');
 
 // Hoặc có thể add vào bằng mảng
 // $processruns->add(array(function() { echo "hello"; }, function() { echo "world"; }, array($mydog, 'bark'), 'test'));
+echo '<br> execute() <br>';
 $processruns->execute();
 
 

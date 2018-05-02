@@ -60,12 +60,16 @@ class HtmlText extends Text
     }
 }
 
-echo '<br><br> $jsonText <br>';
+echo '  $jsonText <br>';
 $jsonText = new JsonText('1');
-//echo $jsonText;
+echo '<pre>';
+print_r($jsonText);
+echo '</pre>';
 
 echo '<br><br> $htmlText <br>';
 $htmlText = new HtmlText('2');
-//echo $htmlText;
+echo '<pre>';
+print_r($htmlText);
+echo '</pre>';
 
 

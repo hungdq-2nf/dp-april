@@ -3,7 +3,7 @@ echo '---- Behavioral > Null Object <br><br>';
 
 /* Behavioral > Null Object
  *
- * đối tượng null
+ * obj null
  */
 
 interface LoggerInterface

@@ -105,8 +105,8 @@ class StudentsList
         $this->_students = $list;
     }
 
-    // Thực hiện sắp xếp sử dụng một thực thi từ iSort
-    function sort(iSort $type)
+    // Thực hiện sắp xếp dùng một thực thi từ iSort
+    function sorting(iSort $type)
     {
         $this->_students = $type->sort($this->_students);
     }
@@ -145,7 +145,7 @@ $students = [
     ],
 ];
 
-// Tạo đối tượng
+// Tạo obj
 $list = new StudentsList($students);
 
 // Hiển thị mảng trước khi sắp xếp
@@ -153,15 +153,15 @@ echo '<h4>Danh sách gốc</h4>';
 $list->display();
 
 // Sắp xếp theo tên
-$list->sort(new MultiAlphaSort('first_name'));
+$list->sorting(new MultiAlphaSort('first_name'));
 echo '<h4>Danh sách sắp xếp theo tên</h4>';
 $list->display();
 
 // Sắp xếp theo điểm
 //$list->sort(new MultiNumberSort('grade', 'desc'));
-$list->sort(new MultiNumberSort('grade', 'asc'));
+$list->sorting(new MultiNumberSort('grade', 'asc'));
 echo '<h4>Danh sách sắp xếp theo điểm</h4>';
 $list->display();
 
-// Xóa đối tượng
+// Xóa obj
 unset($list);

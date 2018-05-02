@@ -4,7 +4,7 @@
 //composite - tích hợp      < Creational
 
 #------------ ĐỊNH NGHĨA CLASS ----------------------#
-/* Định nghĩa class WorkUnit sử dụng Composite pattern
+/* Định nghĩa class WorkUnit dùng Composite pattern
  * Lớp có 2 thuộc tính: tasks, name.
  * Lớp có 6 phương thức: __construct(), getName(), add(), remove(), assignTask(), completeTask().
  */
@@ -117,7 +117,7 @@ class Employee extends WorkUnit {
 }
 #------------ KẾT THÚC ĐỊNH NGHĨA CLASS ----------------------#
 
-// Tạo đối tượng
+// Tạo obj
 $fontend    = new Team('Fontend');
 $kulit      = new Employee('Kulit');
 $evan       = new Employee('Evan You');
@@ -127,6 +127,7 @@ $taylor     = new Employee('Taylor Otwell');
 $fontend->add($kulit);
 $fontend->add($evan);
 $fontend->add($taylor);
+echo $fontend->getCount();
 
 // Gán các tác vụ cho nhóm và nhân viên
 $fontend->assignTask('Xây dựng website');
@@ -137,7 +138,7 @@ $fontend->completeTask('Xây dựng website');
 // Chuyển Taylor Otwell sang nhóm backend
 $fontend->remove($taylor);
 
-// Xóa các đối tượng
+// Xóa các obj
 unset($fontend, $kulit, $evan, $taylor);
 
 echo '<br> Team() <br>';
