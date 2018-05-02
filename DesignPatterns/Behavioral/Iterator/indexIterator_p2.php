@@ -1,49 +1,74 @@
 <?php
 
-class Book2 {
+class Book2
+{
     private $author;
     private $title;
-    function __construct($title_in, $author_in) {
+
+    function __construct($title_in, $author_in)
+    {
         $this->author = $author_in;
-        $this->title  = $title_in;
+        $this->title = $title_in;
     }
-    function getAuthor() {return $this->author;}
-    function getTitle() {return $this->title;}
-    function getAuthorAndTitle() {
+
+    function getAuthor()
+    {
+        return $this->author;
+    }
+
+    function getTitle()
+    {
+        return $this->title;
+    }
+
+    function getAuthorAndTitle()
+    {
         return $this->getTitle() . ' by ' . $this->getAuthor();
     }
 }
 
-class BookList2 {
+class BookList2
+{
     private $books = array();
     private $bookCount = 0;
-    public function __construct() {
+
+    public function __construct()
+    {
     }
-    public function getBookCount() {
+
+    public function getBookCount()
+    {
         return $this->bookCount;
     }
-    private function setBookCount($newCount) {
+
+    private function setBookCount($newCount)
+    {
         $this->bookCount = $newCount;
     }
-    public function getBook($bookNumberToGet) {
-        if ( (is_numeric($bookNumberToGet)) &&
+
+    public function getBook($bookNumberToGet)
+    {
+        if ((is_numeric($bookNumberToGet)) &&
             ($bookNumberToGet <= $this->getBookCount())) {
             return $this->books[$bookNumberToGet];
         } else {
             return NULL;
         }
     }
-    public function addBook(Book2 $book_in) {
+
+    public function addBook(Book2 $book_in)
+    {
         $this->setBookCount($this->getBookCount() + 1);
         $this->books[$this->getBookCount()] = $book_in;
         return $this->getBookCount();
     }
-    public function removeBook(Book2 $book_in) {
+
+    public function removeBook(Book2 $book_in)
+    {
         $counter = 0;
         while (++$counter <= $this->getBookCount()) {
             if ($book_in->getAuthorAndTitle() ==
-                $this->books[$counter]->getAuthorAndTitle())
-            {
+                $this->books[$counter]->getAuthorAndTitle()) {
                 for ($x = $counter; $x < $this->getBookCount(); $x++) {
                     $this->books[$x] = $this->books[$x + 1];
                 }
@@ -54,27 +79,35 @@ class BookList2 {
     }
 }
 
-class BookListIterator {
+class BookListIterator
+{
     protected $bookList;
     protected $currentBook = 0;
 
-    public function __construct(BookList2 $bookList_in) {
+    public function __construct(BookList2 $bookList_in)
+    {
         $this->bookList = $bookList_in;
     }
-    public function getCurrentBook() {
+
+    public function getCurrentBook()
+    {
         if (($this->currentBook > 0) &&
             ($this->bookList->getBookCount() >= $this->currentBook)) {
             return $this->bookList->getBook($this->currentBook);
         }
     }
-    public function getNextBook() {
+
+    public function getNextBook()
+    {
         if ($this->hasNextBook()) {
             return $this->bookList->getBook(++$this->currentBook);
         } else {
             return NULL;
         }
     }
-    public function hasNextBook() {
+
+    public function hasNextBook()
+    {
         if ($this->bookList->getBookCount() > $this->currentBook) {
             return TRUE;
         } else {
@@ -83,19 +116,25 @@ class BookListIterator {
     }
 }
 
-class BookListReverseIterator extends BookListIterator {
-    public function __construct(BookList2 $bookList_in) {
+class BookListReverseIterator extends BookListIterator
+{
+    public function __construct(BookList2 $bookList_in)
+    {
         $this->bookList = $bookList_in;
         $this->currentBook = $this->bookList->getBookCount() + 1;
     }
-    public function getNextBook() {
+
+    public function getNextBook()
+    {
         if ($this->hasNextBook()) {
             return $this->bookList->getBook(--$this->currentBook);
         } else {
             return NULL;
         }
     }
-    public function hasNextBook() {
+
+    public function hasNextBook()
+    {
         if (1 < $this->currentBook) {
             return TRUE;
         } else {
@@ -148,8 +187,9 @@ writeln('getting current book with reverse iterator :');
 writeln($book->getAuthorAndTitle());
 writeln('');
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>

@@ -3,16 +3,20 @@
 /*
  *   Singleton classes
  */
-class BookSingleton {
+
+class BookSingleton
+{
     private $author = 'Gamma, Helm, Johnson, and Vlissides';
-    private $title  = 'Design Patterns';
+    private $title = 'Design Patterns';
     private static $book = NULL;
     private static $isLoanedOut = FALSE;
 
-    private function __construct() {
+    private function __construct()
+    {
     }
 
-    static function borrowBook() {
+    static function borrowBook()
+    {
         if (FALSE == self::$isLoanedOut) {
             if (NULL == self::$book) {
                 self::$book = new BookSingleton();
@@ -24,27 +28,38 @@ class BookSingleton {
         }
     }
 
-    function returnBook(BookSingleton $bookReturned) {
+    function returnBook(BookSingleton $bookReturned)
+    {
         self::$isLoanedOut = FALSE;
     }
 
-    function getAuthor() {return $this->author;}
+    function getAuthor()
+    {
+        return $this->author;
+    }
 
-    function getTitle() {return $this->title;}
+    function getTitle()
+    {
+        return $this->title;
+    }
 
-    function getAuthorAndTitle() {
+    function getAuthorAndTitle()
+    {
         return $this->getTitle() . ' by ' . $this->getAuthor();
     }
 }
 
-class BookBorrower {
+class BookBorrower
+{
     private $borrowedBook;
     private $haveBook = FALSE;
 
-    function __construct() {
+    function __construct()
+    {
     }
 
-    function getAuthorAndTitle() {
+    function getAuthorAndTitle()
+    {
         if (TRUE == $this->haveBook) {
             return $this->borrowedBook->getAuthorAndTitle();
         } else {
@@ -52,7 +67,8 @@ class BookBorrower {
         }
     }
 
-    function borrowBook() {
+    function borrowBook()
+    {
         $this->borrowedBook = BookSingleton::borrowBook();
         if ($this->borrowedBook == NULL) {
             $this->haveBook = FALSE;
@@ -61,7 +77,8 @@ class BookBorrower {
         }
     }
 
-    function returnBook() {
+    function returnBook()
+    {
         $this->borrowedBook->returnBook($this->borrowedBook);
     }
 }
@@ -97,7 +114,9 @@ writeln($bookBorrower1->getAuthorAndTitle());
 writeln('');
 
 
-function writeln($line_in) {
-    echo $line_in.'<br/>';
+function writeln($line_in)
+{
+    echo $line_in . '<br/>';
 }
+
 ?>

@@ -1,33 +1,49 @@
 <?php
 
-abstract class Book2Prototype {
+abstract class Book2Prototype
+{
     protected $title;
     protected $topic;
+
     abstract function __clone();
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
-    function setTitle($titleIn) {
+
+    function setTitle($titleIn)
+    {
         $this->title = $titleIn;
     }
-    function getTopic() {
+
+    function getTopic()
+    {
         return $this->topic;
     }
 }
 
-class PHPBookPrototype extends Book2Prototype {
-    function __construct() {
+class PHPBookPrototype extends Book2Prototype
+{
+    function __construct()
+    {
         $this->topic = 'PHP';
     }
-    function __clone() {
+
+    function __clone()
+    {
     }
 }
 
-class SQLBookPrototype extends Book2Prototype {
-    function __construct() {
+class SQLBookPrototype extends Book2Prototype
+{
+    function __construct()
+    {
         $this->topic = 'SQL';
     }
-    function __clone() {
+
+    function __clone()
+    {
     }
 }
 
@@ -38,25 +54,26 @@ $sqlProto = new SQLBookPrototype();
 
 $book1 = clone $sqlProto;
 $book1->setTitle('SQL For Cats');
-writeln('Book 1 topic: '.$book1->getTopic());
-writeln('Book 1 title: '.$book1->getTitle());
+writeln('Book 1 topic: ' . $book1->getTopic());
+writeln('Book 1 title: ' . $book1->getTitle());
 writeln('');
 
 $book2 = clone $phpProto;
 $book2->setTitle('OReilly Learning PHP 5');
-writeln('Book 2 topic: '.$book2->getTopic());
-writeln('Book 2 title: '.$book2->getTitle());
+writeln('Book 2 topic: ' . $book2->getTopic());
+writeln('Book 2 title: ' . $book2->getTitle());
 writeln('');
 
 $book3 = clone $sqlProto;
 $book3->setTitle('OReilly Learning SQL');
-writeln('Book 3 topic: '.$book3->getTopic());
-writeln('Book 3 title: '.$book3->getTitle());
+writeln('Book 3 topic: ' . $book3->getTopic());
+writeln('Book 3 title: ' . $book3->getTitle());
 writeln('');
 
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>

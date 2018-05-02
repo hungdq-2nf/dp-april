@@ -1,27 +1,39 @@
 <?php
 
-class SimpleBook {
+class SimpleBook
+{
     private $author;
     private $title;
-    function __construct($author_in, $title_in) {
+
+    function __construct($author_in, $title_in)
+    {
         $this->author = $author_in;
-        $this->title  = $title_in;
+        $this->title = $title_in;
     }
-    function getAuthor() {
+
+    function getAuthor()
+    {
         return $this->author;
     }
-    function getTitle() {
+
+    function getTitle()
+    {
         return $this->title;
     }
 }
 
-class BookAdapter {
+class BookAdapter
+{
     private $book;
-    function __construct(SimpleBook $book_in) {
+
+    function __construct(SimpleBook $book_in)
+    {
         $this->book = $book_in;
     }
-    function getAuthorAndTitle() {
-        return $this->book->getTitle().' by '.$this->book->getAuthor();
+
+    function getAuthorAndTitle()
+    {
+        return $this->book->getTitle() . ' by ' . $this->book->getAuthor();
     }
 }
 
@@ -31,12 +43,13 @@ writeln('');
 
 $book = new SimpleBook("Gamma, Helm, Johnson, and Vlissides", "Design Patterns");
 $bookAdapter = new BookAdapter($book);
-writeln('Author and Title: '.$bookAdapter->getAuthorAndTitle());
+writeln('Author and Title: ' . $bookAdapter->getAuthorAndTitle());
 writeln('');
 
 
-function writeln($line_in) {
-    echo $line_in."<br/>";
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
 }
 
 ?>
