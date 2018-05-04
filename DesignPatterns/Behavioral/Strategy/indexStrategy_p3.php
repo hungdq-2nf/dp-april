@@ -110,4 +110,13 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+test 1 - show name context C
+PHP FOR CATS
+
+test 2 - show name context E
+PHP!for!Cats
+
+test 3 - show name context S
+PHP*for*Cats

@@ -152,4 +152,14 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+test 1 - show the book count after a book is added
+1
+
+test 2 - show the book
+PHP for Cats by Larry Truett
+
+test 3 - show the book count after a book is removed
+0
+

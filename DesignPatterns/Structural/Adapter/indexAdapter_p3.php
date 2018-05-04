@@ -52,4 +52,6 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+Author and Title: Design Patterns by Gamma, Helm, Johnson, and Vlissides

@@ -108,10 +108,21 @@ writeln($decorator->resetTitle());
 writeln($decorator->showTitle());
 writeln('');
 
-
 function writeln($line_in)
 {
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+showing title :
+Design Patterns
+
+showing title after two exclaims added :
+!!Design Patterns!!
+
+showing title after star added :
+!!Design*Patterns!!
+
+showing title after reset:
+Design Patterns

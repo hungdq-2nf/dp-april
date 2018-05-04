@@ -31,9 +31,9 @@ class CaseReverseFacade
 {
     public static function reverseStringCase($stringIn)
     {
-        $arrayFromString = ArrayStringFunctions::stringToArray($stringIn);
-        $reversedCaseArray = ArrayCaseReverse::reverseCase($arrayFromString);
-        $reversedCaseString = ArrayStringFunctions::arrayToString($reversedCaseArray);
+        $arrayFromString          = ArrayStringFunctions::stringToArray($stringIn);
+        $reversedCaseArray      = ArrayCaseReverse::reverseCase($arrayFromString);
+        $reversedCaseString     = ArrayStringFunctions::arrayToString($reversedCaseArray);
         return $reversedCaseString;
     }
 }
@@ -57,14 +57,20 @@ class ArrayCaseReverse
     {
         $array_out = array();
         for ($x = 0; $x < count($arrayIn); $x++) {
-            if (in_array($arrayIn[$x], self::$uppercase_array)) {
-                $key = array_search($arrayIn[$x], self::$uppercase_array);
+            $arInX = $arrayIn[$x];
+
+            if (in_array($arInX, self::$uppercase_array)) {
+
+                $key = array_search($arInX, self::$uppercase_array);
                 $array_out[$x] = self::$lowercase_array[$key];
-            } elseif (in_array($arrayIn[$x], self::$lowercase_array)) {
-                $key = array_search($arrayIn[$x], self::$lowercase_array);
+
+            } elseif (in_array($arInX, self::$lowercase_array)) {
+
+                $key = array_search($arInX, self::$lowercase_array);
                 $array_out[$x] = self::$uppercase_array[$key];
+
             } else {
-                $array_out[$x] = $arrayIn[$x];
+                $array_out[$x] = $arInX;
             }
         }
         return $array_out;
@@ -107,4 +113,9 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+Original book title: Design Patterns
+
+Reversed book title: dESIGNpATTERNS
+
