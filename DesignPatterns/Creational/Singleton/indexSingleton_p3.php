@@ -113,10 +113,22 @@ writeln('BookBorrower2 Author and Title: ');
 writeln($bookBorrower1->getAuthorAndTitle());
 writeln('');
 
-
 function writeln($line_in)
 {
     echo $line_in . '<br/>';
 }
 
-?>
+/* kq:
+
+BookBorrower1 asked to borrow the book
+BookBorrower1 Author and Title:
+Design Patterns by Gamma, Helm, Johnson, and Vlissides
+
+BookBorrower2 asked to borrow the book
+BookBorrower2 Author and Title:
+I don't have the book
+
+BookBorrower1 returned the book
+
+BookBorrower2 Author and Title:
+Design Patterns by Gamma, Helm, Johnson, and Vlissides

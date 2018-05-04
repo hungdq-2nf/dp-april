@@ -105,4 +105,16 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+test 1 - author title with caps
+LARRY TRUETT's PHP FOR CATS
+
+test 2 - author title with stars
+Larry*Truett's PHP*for*Cats
+
+test 3 - title author with caps
+PHP FOR CATS by LARRY TRUETT
+
+test 4 - title author with stars
+PHP*for*Cats by Larry*Truett

@@ -159,4 +159,30 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+(after creating first book) oneBook info:
+Core PHP Programming, Third Edition by Atkinson and Suraski
+
+(after creating second book) oneBook info:
+PHP Bible by Converse and Park
+
+(after creating third book) oneBook info:
+Design Patterns by Gamma, Helm, Johnson, and Vlissides
+
+(after adding firstBook to books) SeveralBooks info :
+Core PHP Programming, Third Edition by Atkinson and Suraski
+
+(after adding secondBook to books) SeveralBooks info :
+PHP Bible by Converse and Park
+
+(after adding thirdBook to books) SeveralBooks info :
+Design Patterns by Gamma, Helm, Johnson, and Vlissides
+
+(after removing firstBook from books) SeveralBooks count : 2
+
+(after removing firstBook from books) SeveralBooks info 1 :
+PHP Bible by Converse and Park
+
+(after removing firstBook from books) SeveralBooks info 2 :
+Design Patterns by Gamma, Helm, Johnson, and Vlissides

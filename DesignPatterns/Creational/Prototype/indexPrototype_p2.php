@@ -76,4 +76,13 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+Book 1 topic: SQL
+Book 1 title: SQL For Cats
+
+Book 2 topic: PHP
+Book 2 title: OReilly Learning PHP 5
+
+Book 3 topic: SQL
+Book 3 title: OReilly Learning SQL

@@ -114,4 +114,16 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+test 1 - show name
+PHP*for*Cats
+
+test 2 - show name
+PHP*for*Cats
+
+test 3 - show name
+PHP!for!Cats
+
+test 4 - show name
+PHP*for*Cats

@@ -182,4 +182,21 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+testing OReillyFactoryMethod
+us php Author: Rasmus Lerdorf and Kevin Tatroe
+us php Title: Programming PHP
+other php Author: George Schlossnagle
+other php Title: Advanced PHP Programming
+otherother php Author: David Sklar and Adam Trachtenberg
+otherother php Title: PHP Cookbook
+
+testing SamsFactoryMethod
+us php Author: Christian Wenz
+us php Title: PHP Phrasebook
+other php Author: Rasmus Lerdorf and Kevin Tatroe
+other php Title: Programming PHP
+otherother php Author: Larry Ullman
+otherother php Title: PHP for the World Wide Web
+

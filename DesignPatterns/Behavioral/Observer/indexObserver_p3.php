@@ -14,11 +14,6 @@ abstract class AbstractSubject
     abstract function notify();
 }
 
-function writeln($line_in)
-{
-    echo $line_in . "<br/>";
-}
-
 class PatternObserver extends AbstractObserver
 {
     public function __construct()
@@ -86,5 +81,20 @@ $patternGossiper->updateFavorites('abstract factory, decorator, visitor');
 $patternGossiper->updateFavorites('abstract factory, observer, decorator');
 $patternGossiper->detach($patternGossipFan);
 $patternGossiper->updateFavorites('abstract factory, observer, paisley');
+writeln('');
 
-?>
+function writeln($line_in)
+{
+    echo $line_in . "<br/>";
+}
+
+/* kq:
+
+*IN PATTERN OBSERVER - NEW PATTERN GOSSIP ALERT*
+new favorite patterns: abstract factory, decorator, visitor
+*IN PATTERN OBSERVER - PATTERN GOSSIP ALERT OVER*
+
+*IN PATTERN OBSERVER - NEW PATTERN GOSSIP ALERT*
+new favorite patterns: abstract factory, observer, decorator
+*IN PATTERN OBSERVER - PATTERN GOSSIP ALERT OVER*
+

@@ -205,4 +205,20 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+testing OReillyBookFactory
+first php Author: Rasmus Lerdorf and Kevin Tatroe
+first php Title: Programming PHP
+second php Author: David Sklar and Adam Trachtenberg
+second php Title: PHP Cookbook
+MySQL Author: George Reese, Randy Jay Yarger, and Tim King
+MySQL Title: Managing and Using MySQL
+
+testing SamsBookFactory
+first php Author: Christian Wenz
+first php Title: PHP Phrasebook
+second php Author: George Schlossnagle
+second php Title: Advanced PHP Programming
+MySQL Author: Paul Dubois
+MySQL Title: MySQL, 3rd Edition

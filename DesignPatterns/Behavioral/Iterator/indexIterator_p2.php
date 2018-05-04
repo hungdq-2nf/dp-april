@@ -192,4 +192,30 @@ function writeln($line_in)
     echo $line_in . "<br/>";
 }
 
-?>
+/* kq:
+
+Testing the Iterator
+getting next book with iterator :
+Core PHP Programming, Third Edition by Atkinson and Suraski
+
+getting next book with iterator :
+PHP Bible by Converse and Park
+
+getting next book with iterator :
+Design Patterns by Gamma, Helm, Johnson, and Vlissides
+
+getting current book with iterator :
+Design Patterns by Gamma, Helm, Johnson, and Vlissides
+
+Testing the Reverse Iterator
+getting next book with reverse iterator :
+Design Patterns by Gamma, Helm, Johnson, and Vlissides
+
+getting next book with reverse iterator :
+PHP Bible by Converse and Park
+
+getting next book with reverse iterator :
+Core PHP Programming, Third Edition by Atkinson and Suraski
+
+getting current book with reverse iterator :
+Core PHP Programming, Third Edition by Atkinson and Suraski
