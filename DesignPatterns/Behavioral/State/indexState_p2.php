@@ -42,7 +42,7 @@ class BookTitleStateExclaim implements BookTitleStateInterface
         $title = $context_in->getBook()->getTitle();
         $this->titleCount++;
         $context_in->setTitleState(new BookTitleStateStars());
-        return Str_replace(' ', '!', $title);
+        return str_replace(' ', '!', $title);
     }
 }
 
@@ -57,7 +57,7 @@ class BookTitleStateStars implements BookTitleStateInterface
         if (1 < $this->titleCount) {
             $context_in->setTitleState(new BookTitleStateExclaim);
         }
-        return Str_replace(' ', '*', $title);
+        return str_replace(' ', '*', $title);
     }
 }
 

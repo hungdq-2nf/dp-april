@@ -97,7 +97,7 @@ class ArrayStringFunctions
 
 writeln('');
 
-$book = new Book('Design Patterns', 'Gamma, Helm, Johnson, and Vlissides');
+$book = new Book('Title Book Simple', 'Author Book Simple');
 
 writeln('Original book title: ' . $book->getTitle());
 writeln('');

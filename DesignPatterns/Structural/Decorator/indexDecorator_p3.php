@@ -76,17 +76,17 @@ class BookTitleStarDecorator extends BookTitleDecorator
 
     function starTitle()
     {
-        $this->btd->title = Str_replace(" ", "*", $this->btd->title);
+        $this->btd->title = str_replace(" ", "*", $this->btd->title);
     }
 }
 
 writeln('');
 
-$patternBook = new Book('Gamma, Helm, Johnson, and Vlissides', 'Design Patterns');
+$patternBook = new Book('Author Book Simple', 'Title Book Simple');
 
-$decorator = new BookTitleDecorator($patternBook);
-$starDecorator = new BookTitleStarDecorator($decorator);
-$exclaimDecorator = new BookTitleExclaimDecorator($decorator);
+$decorator                   = new BookTitleDecorator($patternBook);
+$starDecorator            = new BookTitleStarDecorator($decorator);
+$exclaimDecorator     = new BookTitleExclaimDecorator($decorator);
 
 writeln('showing title : ');
 writeln($decorator->showTitle());

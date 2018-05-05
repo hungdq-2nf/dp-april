@@ -5,47 +5,47 @@ abstract class AbstractFactoryMethod
     abstract function makePHPBook($param);
 }
 
-class OReillyFactoryMethod extends AbstractFactoryMethod
+class SalahFactoryMethod extends AbstractFactoryMethod
 {
-    private $context = "OReilly";
+    private $context = "Salah";
 
     function makePHPBook($param)
     {
         $book = NULL;
         switch ($param) {
             case "us":
-                $book = new OReillyPHPBook;
+                $book = new SalahPHPBook;
                 break;
             case "other":
-                $book = new SamsPHPBook;
+                $book = new BobbyPHPBook;
                 break;
             default:
-                $book = new OReillyPHPBook;
+                $book = new SalahPHPBook;
                 break;
         }
         return $book;
     }
 }
 
-class SamsFactoryMethod extends AbstractFactoryMethod
+class BobbyFactoryMethod extends AbstractFactoryMethod
 {
-    private $context = "Sams";
+    private $context = "Bobby";
 
     function makePHPBook($param)
     {
         $book = NULL;
         switch ($param) {
             case "us":
-                $book = new SamsPHPBook;
+                $book = new BobbyPHPBook;
                 break;
             case "other":
-                $book = new OReillyPHPBook;
+                $book = new SalahPHPBook;
                 break;
             case "otherother":
                 $book = new VisualQuickstartPHPBook;
                 break;
             default:
-                $book = new SamsPHPBook;
+                $book = new BobbyPHPBook;
                 break;
         }
         return $book;
@@ -64,7 +64,7 @@ abstract class AbstractPHPBook
     private $subject = "PHP";
 }
 
-class OReillyPHPBook extends AbstractPHPBook
+class SalahPHPBook extends AbstractPHPBook
 {
     private $author;
     private $title;
@@ -95,7 +95,7 @@ class OReillyPHPBook extends AbstractPHPBook
     }
 }
 
-class SamsPHPBook extends AbstractPHPBook
+class BobbyPHPBook extends AbstractPHPBook
 {
     private $author;
     private $title;
@@ -150,13 +150,13 @@ class VisualQuickstartPHPBook extends AbstractPHPBook
 
 writeln('');
 
-writeln('testing OReillyFactoryMethod');
-$factoryMethodInstance = new OReillyFactoryMethod;
+writeln('testing SalahFactoryMethod');
+$factoryMethodInstance = new SalahFactoryMethod;
 testFactoryMethod($factoryMethodInstance);
 writeln('');
 
-writeln('testing SamsFactoryMethod');
-$factoryMethodInstance = new SamsFactoryMethod;
+writeln('testing BobbyFactoryMethod');
+$factoryMethodInstance = new BobbyFactoryMethod;
 testFactoryMethod($factoryMethodInstance);
 writeln('');
 
@@ -184,7 +184,7 @@ function writeln($line_in)
 
 /* kq:
 
-testing OReillyFactoryMethod
+testing SalahFactoryMethod
 us php Author: Rasmus Lerdorf and Kevin Tatroe
 us php Title: Programming PHP
 other php Author: George Schlossnagle
@@ -192,7 +192,7 @@ other php Title: Advanced PHP Programming
 otherother php Author: David Sklar and Adam Trachtenberg
 otherother php Title: PHP Cookbook
 
-testing SamsFactoryMethod
+testing BobbyFactoryMethod
 us php Author: Christian Wenz
 us php Title: PHP Phrasebook
 other php Author: Rasmus Lerdorf and Kevin Tatroe

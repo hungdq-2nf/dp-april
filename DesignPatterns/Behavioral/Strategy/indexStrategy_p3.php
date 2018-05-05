@@ -45,7 +45,7 @@ class StrategyExclaim implements StrategyInterface
     public function showTitle($book_in)
     {
         $title = $book_in->getTitle();
-        return Str_replace(' ', '!', $title);
+        return str_replace(' ', '!', $title);
     }
 }
 
@@ -54,7 +54,7 @@ class StrategyStars implements StrategyInterface
     public function showTitle($book_in)
     {
         $title = $book_in->getTitle();
-        return Str_replace(' ', '*', $title);
+        return str_replace(' ', '*', $title);
     }
 }
 

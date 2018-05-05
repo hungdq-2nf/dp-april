@@ -146,9 +146,9 @@ class BookListReverseIterator extends BookListIterator
 
 writeln('');
 
-$firstBook = new Book2('Core PHP Programming, Third Edition', 'Atkinson and Suraski');
-$secondBook = new Book2('PHP Bible', 'Converse and Park');
-$thirdBook = new Book2('Design Patterns', 'Gamma, Helm, Johnson, and Vlissides');
+$firstBook = new Book2('Title Book first', 'Author Book first');
+$secondBook = new Book2('Title Book second', 'Author Book second');
+$thirdBook = new Book2('Title Book third', 'Author Book third');
 
 $books = new BookList2();
 $books->addBook($firstBook);
@@ -196,26 +196,26 @@ function writeln($line_in)
 
 Testing the Iterator
 getting next book with iterator :
-Core PHP Programming, Third Edition by Atkinson and Suraski
+Title Book first by Author Book first
 
 getting next book with iterator :
-PHP Bible by Converse and Park
+Title Book second by Author Book second
 
 getting next book with iterator :
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book third by Author Book third
 
 getting current book with iterator :
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book third by Author Book third
 
 Testing the Reverse Iterator
 getting next book with reverse iterator :
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book third by Author Book third
 
 getting next book with reverse iterator :
-PHP Bible by Converse and Park
+Title Book second by Author Book second
 
 getting next book with reverse iterator :
-Core PHP Programming, Third Edition by Atkinson and Suraski
+Title Book first by Author Book first
 
 getting current book with reverse iterator :
-Core PHP Programming, Third Edition by Atkinson and Suraski
+Title Book first by Author Book first

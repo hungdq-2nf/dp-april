@@ -41,7 +41,7 @@ class BookAdapter
 
 writeln('');
 
-$book = new SimpleBook("Gamma, Helm, Johnson, and Vlissides", "Design Patterns");
+$book = new SimpleBook("Author Book Simple", "Title Book Simple");
 $bookAdapter = new BookAdapter($book);
 writeln('Author and Title: ' . $bookAdapter->getAuthorAndTitle());
 writeln('');
@@ -54,4 +54,4 @@ function writeln($line_in)
 
 /* kq:
 
-Author and Title: Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Author and Title: Title Book Simple by Author Book Simple
