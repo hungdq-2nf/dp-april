@@ -11,33 +11,33 @@ abstract class AbstractBookFactory
     abstract function makeMySQLBook();
 }
 
-class OReillyBookFactory extends AbstractBookFactory
+class SalahBookFactory extends AbstractBookFactory
 {
-    private $context = "OReilly";
+    private $context = "Salah";
 
     function makePHPBook()
     {
-        return new OReillyPHPBook;
+        return new SalahPHPBook;
     }
 
     function makeMySQLBook()
     {
-        return new OReillyMySQLBook;
+        return new SalahMySQLBook;
     }
 }
 
-class SamsBookFactory extends AbstractBookFactory
+class BobbyBookFactory extends AbstractBookFactory
 {
-    private $context = "Sams";
+    private $context = "Bobby";
 
     function makePHPBook()
     {
-        return new SamsPHPBook;
+        return new BobbyPHPBook;
     }
 
     function makeMySQLBook()
     {
-        return new SamsMySQLBook;
+        return new BobbyMySQLBook;
     }
 }
 
@@ -57,7 +57,7 @@ abstract class AbstractMySQLBook extends AbstractBook
     private $subject = "MySQL";
 }
 
-class OReillyMySQLBook extends AbstractMySQLBook
+class SalahMySQLBook extends AbstractMySQLBook
 {
     private $author;
     private $title;
@@ -79,7 +79,7 @@ class OReillyMySQLBook extends AbstractMySQLBook
     }
 }
 
-class SamsMySQLBook extends AbstractMySQLBook
+class BobbyMySQLBook extends AbstractMySQLBook
 {
     private $author;
     private $title;
@@ -106,7 +106,7 @@ abstract class AbstractPHPBook extends AbstractBook
     private $subject = "PHP";
 }
 
-class OReillyPHPBook extends AbstractPHPBook
+class SalahPHPBook extends AbstractPHPBook
 {
     private $author;
     private $title;
@@ -137,7 +137,7 @@ class OReillyPHPBook extends AbstractPHPBook
     }
 }
 
-class SamsPHPBook extends AbstractPHPBook
+class BobbyPHPBook extends AbstractPHPBook
 {
     private $author;
     private $title;
@@ -174,13 +174,13 @@ class SamsPHPBook extends AbstractPHPBook
 
 writeln('');
 
-writeln('testing OReillyBookFactory');
-$bookFactoryInstance = new OReillyBookFactory;
+writeln('testing SalahBookFactory');
+$bookFactoryInstance = new SalahBookFactory;
 testConcreteFactory($bookFactoryInstance);
 writeln('');
 
-writeln('testing SamsBookFactory');
-$bookFactoryInstance = new SamsBookFactory;
+writeln('testing BobbyBookFactory');
+$bookFactoryInstance = new BobbyBookFactory;
 testConcreteFactory($bookFactoryInstance);
 
 writeln('');
@@ -207,7 +207,7 @@ function writeln($line_in)
 
 /* kq:
 
-testing OReillyBookFactory
+testing SalahBookFactory
 first php Author: Rasmus Lerdorf and Kevin Tatroe
 first php Title: Programming PHP
 second php Author: David Sklar and Adam Trachtenberg
@@ -215,7 +215,7 @@ second php Title: PHP Cookbook
 MySQL Author: George Reese, Randy Jay Yarger, and Tim King
 MySQL Title: Managing and Using MySQL
 
-testing SamsBookFactory
+testing BobbyBookFactory
 first php Author: Christian Wenz
 first php Title: PHP Phrasebook
 second php Author: George Schlossnagle

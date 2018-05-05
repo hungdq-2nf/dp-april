@@ -69,7 +69,10 @@ class BookList
 
     public function getBook($bookNumberToGet)
     {
-        if ((is_numeric($bookNumberToGet)) && ($bookNumberToGet <= $this->getBookCount())) {
+        if (
+            is_numeric($bookNumberToGet)
+            && $bookNumberToGet <= $this->getBookCount()
+        ) {
             return $this->books[$bookNumberToGet];
         } else {
             return NULL;
@@ -87,7 +90,9 @@ class BookList
     {
         $counter = 0;
         while (++$counter <= $this->getBookCount()) {
+
             if ($book_in->getAuthorAndTitle() == $this->books[$counter]->getAuthorAndTitle()) {
+
                 for ($x = $counter; $x < $this->getBookCount(); $x++) {
                     $this->books[$x] = $this->books[$x + 1];
                 }

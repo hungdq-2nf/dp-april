@@ -6,8 +6,8 @@
 
 class BookSingleton
 {
-    private $author = 'Gamma, Helm, Johnson, and Vlissides';
-    private $title = 'Design Patterns';
+    private $author = 'Author Book Simple';
+    private $title = 'Title Book Simple';
     private static $book = NULL;
     private static $isLoanedOut = FALSE;
 
@@ -122,7 +122,7 @@ function writeln($line_in)
 
 BookBorrower1 asked to borrow the book
 BookBorrower1 Author and Title:
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book Simple by Author Book Simple
 
 BookBorrower2 asked to borrow the book
 BookBorrower2 Author and Title:
@@ -131,4 +131,4 @@ I don't have the book
 BookBorrower1 returned the book
 
 BookBorrower2 Author and Title:
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book Simple by Author Book Simple

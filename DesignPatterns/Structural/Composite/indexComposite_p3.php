@@ -94,8 +94,10 @@ class SeveralBooks extends OnTheBookShelf
     {
         $counter = 0;
         while (++$counter <= $this->getBookCount()) {
+
             if ($oneBook->getBookInfo(1) ==
                 $this->oneBooks[$counter]->getBookInfo(1)) {
+
                 for ($x = $counter; $x < $this->getBookCount(); $x++) {
                     $this->oneBooks[$x] = $this->oneBooks[$x + 1];
                 }
@@ -108,17 +110,17 @@ class SeveralBooks extends OnTheBookShelf
 
 writeln('');
 
-$firstBook = new OneBook('Core PHP Programming, Third Edition', 'Atkinson and Suraski');
+$firstBook = new OneBook('Title Book first', 'Author Book first');
 writeln('(after creating first book) oneBook info: ');
 writeln($firstBook->getBookInfo(1));
 writeln('');
 
-$secondBook = new OneBook('PHP Bible', 'Converse and Park');
+$secondBook = new OneBook('Title Book second', 'Author Book second');
 writeln('(after creating second book) oneBook info: ');
 writeln($secondBook->getBookInfo(1));
 writeln('');
 
-$thirdBook = new OneBook('Design Patterns', 'Gamma, Helm, Johnson, and Vlissides');
+$thirdBook = new OneBook('Title Book third', 'Author Book third');
 writeln('(after creating third book) oneBook info: ');
 writeln($thirdBook->getBookInfo(1));
 writeln('');
@@ -162,27 +164,27 @@ function writeln($line_in)
 /* kq:
 
 (after creating first book) oneBook info:
-Core PHP Programming, Third Edition by Atkinson and Suraski
+Title Book first by Author Book first
 
 (after creating second book) oneBook info:
-PHP Bible by Converse and Park
+Title Book second by Author Book second
 
 (after creating third book) oneBook info:
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book third by Author Book third
 
 (after adding firstBook to books) SeveralBooks info :
-Core PHP Programming, Third Edition by Atkinson and Suraski
+Title Book first by Author Book first
 
 (after adding secondBook to books) SeveralBooks info :
-PHP Bible by Converse and Park
+Title Book second by Author Book second
 
 (after adding thirdBook to books) SeveralBooks info :
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book third by Author Book third
 
 (after removing firstBook from books) SeveralBooks count : 2
 
 (after removing firstBook from books) SeveralBooks info 1 :
-PHP Bible by Converse and Park
+Title Book second by Author Book second
 
 (after removing firstBook from books) SeveralBooks info 2 :
-Design Patterns by Gamma, Helm, Johnson, and Vlissides
+Title Book third by Author Book third

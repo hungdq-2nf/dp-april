@@ -59,13 +59,13 @@ writeln('Book 1 title: ' . $book1->getTitle());
 writeln('');
 
 $book2 = clone $phpProto;
-$book2->setTitle('OReilly Learning PHP 5');
+$book2->setTitle('Salah Learning PHP 5');
 writeln('Book 2 topic: ' . $book2->getTopic());
 writeln('Book 2 title: ' . $book2->getTitle());
 writeln('');
 
 $book3 = clone $sqlProto;
-$book3->setTitle('OReilly Learning SQL');
+$book3->setTitle('Salah Learning SQL');
 writeln('Book 3 topic: ' . $book3->getTopic());
 writeln('Book 3 title: ' . $book3->getTitle());
 writeln('');
@@ -82,7 +82,7 @@ Book 1 topic: SQL
 Book 1 title: SQL For Cats
 
 Book 2 topic: PHP
-Book 2 title: OReilly Learning PHP 5
+Book 2 title: Salah Learning PHP 5
 
 Book 3 topic: SQL
-Book 3 title: OReilly Learning SQL
+Book 3 title: Salah Learning SQL
